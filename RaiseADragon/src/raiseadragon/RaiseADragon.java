@@ -5,15 +5,8 @@
  */
 package raiseadragon;
 
-import byui.cit260.raiseADragon.model.Food;
-import byui.cit260.raiseADragon.model.Fruit;
-import byui.cit260.raiseADragon.model.Game;
-import byui.cit260.raiseADragon.model.Location;
-import byui.cit260.raiseADragon.model.Map;
-import byui.cit260.raiseADragon.model.Meat;
-import byui.cit260.raiseADragon.model.Player;
-import byui.cit260.raiseADragon.model.Sweets;
-import byui.cit260.raiseADragon.model.Vegetables;
+import byui.cit260.raiseADragon.model.*;
+
 
 /**
  *
@@ -24,53 +17,66 @@ public class RaiseADragon {
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(String[] args) {
         
-        Player player01 = new Player();
-        player01.setName("Gotzila");
+        Food food = new Food();
+        System.out.println("Here is an overview of the "+ food.toString());
         
-        System.out.println("The name of the firs player is "+ player01.getName());
+        Fruit fruit = new Fruit();
+        System.out.println("Here is an overview of the "+ fruit.toString());
         
-        Food food01 = new Food();
-        food01.setName("Food");
+        Game game = new Game();
+        System.out.println("Here is an overview of the "+ game.toString());
         
-        System.out.println("You have gone out and bought "+ food01.getName());
+        Location location = new Location();
+        System.out.println("Here is an overview of the "+ location.toString());
         
-        Fruit fruit01 = new Fruit();
-        fruit01.setName("an Apple");
+        Map map = new Map();
+        System.out.println("Here is an overview of the "+ map.toString());
         
-        System.out.println("You have obtained "+ fruit01.getName());
+        Meat meat = new Meat();
+        System.out.println("Here is an overview of the "+ meat.toString());
         
-        Meat meat01 = new Meat();
-        meat01.setName("some Ham");
+        Sweets sweets = new Sweets();
+        System.out.println("Here is an overview of the "+ sweets.toString());
         
-        System.out.println("You have obtained "+ meat01.getName());
+        Vegetables vegetable = new Vegetables();
+        System.out.println("Here is an overview of the "+ vegetable.toString());
         
-        Sweets sweets01 = new Sweets();
-        sweets01.setName("a Chocolate Bar");
+        BodyPart bodyPart = new BodyPart();
+        System.out.println("Here is an overview of the "+ bodyPart.toString());
         
-        System.out.println("You have obtained "+ sweets01.getName());
+        Dragon dragon = new Dragon();
+        System.out.println("Here is an overview of the "+ dragon.toString());
         
-        Vegetables vegetables01 = new Vegetables();
-        vegetables01.setName("Celery");
+        Healing healing = new Healing();
+        System.out.println("Here is an overview of the "+ healing.toString());
         
-        System.out.println("You have obtained "+ vegetables01.getName());
+        Hygiene hygiene = new Hygiene();
+        System.out.println("Here is an overview of the "+ hygiene.toString());
         
-        Game game01 = new Game();
-        game01.setName("Raise a Dragon");
+        Interaction interaction = new Interaction();
+        System.out.println("Here is an overview of the "+ interaction.toString());
         
-        System.out.println("Welcome to "+ game01.getName());
+        Inventory inventory = new Inventory();
+        System.out.println("Here is an overview of the "+ inventory.toString());
         
-        Location location01 = new Location();
-        location01.setName("Forest");
+        Item item = new Item();
+        System.out.println("Here is an overview of the "+ item.toString());
         
-        System.out.println("You are now in the "+location01.getName());
+        Player player = new Player();
+        System.out.println("Here is an overview of the "+ player.toString());
         
-        Map map01 = new Map();
-        map01.setName("Map");
+        Status status = new Status();
+        System.out.println("Here is an overview of the "+ status.toString());
+       
+        Training training = new Training();
+        System.out.println("Here is an overview of the "+ training.toString());
         
-        System.out.println("Here is an overview of the "+ map01.getName());
-        
+        Wellness wellness = new Wellness();
+        System.out.println("Here is an overview of the "+ wellness.toString());
     }
     
 }
