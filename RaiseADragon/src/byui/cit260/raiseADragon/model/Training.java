@@ -5,10 +5,53 @@
  */
 package byui.cit260.raiseADragon.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author JESUS
  */
-public class Training {
+public class Training implements Serializable {
+    
+    private String name;
+
+    public Training() {
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Training other = (Training) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Training{" + "name=" + name + '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
 }

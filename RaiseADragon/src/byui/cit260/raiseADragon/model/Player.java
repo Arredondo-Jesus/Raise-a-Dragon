@@ -6,6 +6,7 @@
 package byui.cit260.raiseADragon.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -15,8 +16,8 @@ import java.util.Objects;
 public class Player implements Serializable {
     
     private String name;
-    private Integer score;
-    private String time;
+    private int score;
+    private Date time;
 
     public Player() {
     }
@@ -30,6 +31,11 @@ public class Player implements Serializable {
         return hash;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", score=" + score + ", time=" + time + '}';
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -67,11 +73,11 @@ public class Player implements Serializable {
         this.score = score;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
     
