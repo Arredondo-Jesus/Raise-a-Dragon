@@ -19,23 +19,17 @@ public class Dragon implements Serializable {
     private double size;
     private String color;
     private int age;
-    private BodyPart dragonBodyPart;
 
-    public Dragon () {
-    }
-
-    @Override
-    public String toString() {
-        return "Dragon{" + "name=" + name + ", size=" + size + ", color=" + color + ", age=" + age + '}';
+    public Dragon() {
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.size) ^ (Double.doubleToLongBits(this.size) >>> 32));
-        hash = 67 * hash + Objects.hashCode(this.color);
-        hash = 67 * hash + this.age;
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.size) ^ (Double.doubleToLongBits(this.size) >>> 32));
+        hash = 89 * hash + Objects.hashCode(this.color);
+        hash = 89 * hash + this.age;
         return hash;
     }
 
@@ -62,8 +56,12 @@ public class Dragon implements Serializable {
         }
         return true;
     }
-    
-  
+
+    @Override
+    public String toString() {
+        return "Dragon{" + "name=" + name + ", size=" + size + ", color=" + color + ", age=" + age + '}';
+    }
+
     public String getName() {
         return name;
     }
@@ -95,4 +93,6 @@ public class Dragon implements Serializable {
     public void setAge(int age) {
         this.age = age;
     }
+
+    
 }

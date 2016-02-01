@@ -6,7 +6,6 @@
 package byui.cit260.raiseADragon.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -14,7 +13,6 @@ import java.util.Objects;
  */
 public class Inventory implements Serializable{
     
-    private Item item;
     private double amountOfMoney;
 
     public Inventory() {
@@ -22,9 +20,8 @@ public class Inventory implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.item);
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.amountOfMoney) ^ (Double.doubleToLongBits(this.amountOfMoney) >>> 32));
+        int hash = 5;
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.amountOfMoney) ^ (Double.doubleToLongBits(this.amountOfMoney) >>> 32));
         return hash;
     }
 
@@ -37,9 +34,6 @@ public class Inventory implements Serializable{
             return false;
         }
         final Inventory other = (Inventory) obj;
-        if (!Objects.equals(this.item, other.item)) {
-            return false;
-        }
         if (Double.doubleToLongBits(this.amountOfMoney) != Double.doubleToLongBits(other.amountOfMoney)) {
             return false;
         }
@@ -48,15 +42,7 @@ public class Inventory implements Serializable{
 
     @Override
     public String toString() {
-        return "Inventory{" + "item=" + item + ", amountOfMoney=" + amountOfMoney + '}';
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
+        return "Inventory{" + "amountOfMoney=" + amountOfMoney + '}';
     }
 
     public double getAmountOfMoney() {
@@ -66,7 +52,4 @@ public class Inventory implements Serializable{
     public void setAmountOfMoney(double amountOfMoney) {
         this.amountOfMoney = amountOfMoney;
     }
-    
-    
-    
 }

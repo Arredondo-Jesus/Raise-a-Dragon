@@ -95,7 +95,6 @@ public class RaiseADragon {
         
         Inventory inventory = new Inventory();
         inventory.setAmountOfMoney(35.5);
-        inventory.setItem(item);
         System.out.println("Here is an overview of the "+ inventory.toString());
         
         Player player = new Player();
