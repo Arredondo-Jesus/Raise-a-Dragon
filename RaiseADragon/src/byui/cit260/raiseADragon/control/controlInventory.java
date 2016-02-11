@@ -12,20 +12,7 @@ import byui.cit260.raiseADragon.model.Item;
  */
 public class controlInventory {
     
-    /**
-    
-    calcCostOfItem(number, unitCost, nameOfItem): totalCost
-BEGIN
-	IF (nameOfItem != validItem)	THEN
-		RETURN -1
-IF (number = null OR number < 0) THEN
-		RETURN -1
-	IF ( unitCost = null OR unitCost < 0 unitCost > 1000) THEN
-		RETURN -1
-
-	totalCost = totalCost + (unitCost * number)	
-	RETURN totalCost
-END
+    /*
      * @param number
      * @param unitCost
      * @param item
