@@ -264,12 +264,12 @@ public class controlBodyPartStatusTest {
         
         
         /*********************************
-         * Test case #15.
+         * Test case #12.
         **********************************/
         
         //Input values for test case 2
         
-        System.out.println("calcBodyPartStatus test 15");
+        System.out.println("calcBodyPartStatus test 12");
         
         points = 0;
         bodyPart=null;
