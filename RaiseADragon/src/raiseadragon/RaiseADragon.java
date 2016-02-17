@@ -6,6 +6,7 @@
 package raiseadragon;
 
 import byui.cit260.raiseADragon.model.*;
+import byui.cit260.raiseADragon.view.*;
 
 
 /**
@@ -18,8 +19,30 @@ public class RaiseADragon {
      * @param args the command line arguments
      */
     
+    private static Game currentGame = null;
+    private static Player player = null;
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        RaiseADragon.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        RaiseADragon.player = player;
+    }
     
     public static void main(String[] args) {
+        
+        // create MainMenuView and start the program
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.startProgram();
         
         Food food = new Food();
         food.setDescription("Food");
