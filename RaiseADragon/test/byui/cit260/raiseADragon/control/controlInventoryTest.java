@@ -38,7 +38,7 @@ public class controlInventoryTest {
         item.setName("ball");
         
         //create the instance of the controlInventory class
-        controlInventory instance = new controlInventory();
+        ControlInventory instance = new ControlInventory();
         
         double expResult = 24.0;// expected output return value
         

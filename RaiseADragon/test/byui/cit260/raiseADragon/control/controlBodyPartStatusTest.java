@@ -40,7 +40,7 @@ public class controlBodyPartStatusTest {
         boolean valid = true;
         
         //create the instance of the controlInventory class
-        controlBodyPartStatus instance = new controlBodyPartStatus();
+        ControlBodyPartStatus instance = new ControlBodyPartStatus();
         
         String expResult = "Dead";// expected output return value
             

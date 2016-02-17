@@ -5,9 +5,10 @@
  */
 package byui.cit260.raiseADragon.view;
 
-import byui.cit260.raiseADragon.control.ProgramControl;
+import byui.cit260.raiseADragon.control.*;
 import byui.cit260.raiseADragon.model.Player;
 import java.util.Scanner;
+import raiseadragon.RaiseADragon;
 
 /**
  *
@@ -19,11 +20,13 @@ public class MainMenuView {
                 + "\n-------------------------------------------------------------"
                 + "\n| Main Menu                                               |"
                 + "\n-------------------------------------------------------------"
-                + "\nG - Start Game"
+                + "\nN - Start New Game"
+                + "\nG - Start Existing Game"
                 + "\nH - Get help on how to play the game"
                 + "\nS - Save Game"
                 + "\nE - Exit"
                 + "\n-------------------------------------------------------------";
+        
         public void displayMenu() {
                 char selection = ' ';
                 do {
@@ -155,7 +158,11 @@ public class MainMenuView {
     }
 
     private void startNewGame() {
-        System.out.println("*** StartNewGame did a thing. ***");
+        //ControlGame.createNewGame(RaiseADragon.getPlayer());
+        
+        // display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
     }
 
     private void startExistingGame() {
@@ -167,7 +174,10 @@ public class MainMenuView {
     }
 
     private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu can be a thing. ***");
+        
+        //display the help menu
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
     }
     
 }

@@ -40,7 +40,7 @@ public class controlLocationTest {
         String newLocation = "Desert";
         
         //Create a new instance of controlLocation
-        controlLocation instance = new controlLocation();
+        ControlLocation instance = new ControlLocation();
         
         //Expected results versus actual results
         double expResult = 1;
