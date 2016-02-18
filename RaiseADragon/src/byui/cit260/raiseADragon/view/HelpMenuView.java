@@ -45,7 +45,7 @@ public class HelpMenuView {
         while(!valid) { //while a valid name has not been retrieved
                 
                 //prompt for the player's name
-                System.out.println("Enter the option below:");
+                System.out.println("\n\nEnter the option below:");
                 
                 // get the name from the keyboard and trim off the blanks
                 playersSelection = keyboard.nextLine();
