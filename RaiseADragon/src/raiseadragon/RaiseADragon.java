@@ -44,7 +44,7 @@ public class RaiseADragon {
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.startProgram();
         
-        Food food = new Food();
+        /*Food food = new Food();
         food.setDescription("Food");
         food.setName("Candy");
         System.out.println("Here is an overview of the "+ food.toString());
@@ -136,6 +136,7 @@ public class RaiseADragon {
         wellness.setName("Ill");
         wellness.setDescription("Stomach problems");
         System.out.println("Here is an overview of the "+ wellness.toString());
+        */
     }
     
 }

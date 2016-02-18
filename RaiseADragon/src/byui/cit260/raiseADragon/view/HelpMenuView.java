@@ -15,7 +15,7 @@ public class HelpMenuView {
     
     private final String HELP_MENU = "\n"
                 + "\n-------------------------------------------------------------"
-                + "\n| Game Menu                                               |"
+                + "\n| Help Menu                                               |"
                 + "\n-------------------------------------------------------------"
                 + "\nG - What is the goal of the game?"
                 + "\nD - What to do?"
