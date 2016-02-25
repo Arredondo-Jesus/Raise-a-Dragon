@@ -14,8 +14,10 @@ import byui.cit260.raiseADragon.model.BodyPart;
 public class ControlBodyPartStatus {
     
     
-    public String calcBodyPartStatus(int points,BodyPart bodyPart, boolean valid){
+    public String calcBodyPartStatus(BodyPart bodyPart){
         String status = null;
+        int points= bodyPart.getPoints();
+        boolean valid = bodyPart.isValid();
         
         if (points < 0){
             return "Error: Points cannot be less than 0";
