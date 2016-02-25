@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 import byui.cit260.raiseADragon.model.Location;
+
 /**
  *
  * @author Chuy
@@ -34,7 +35,7 @@ public class ControlLocation {
         }
         
         //Find out if the location is within the parameters of places to go
-        if(locationNumber < 0 || locationNumber > 13){
+        if(locationNumber < 0 || locationNumber > 25){
             return -1;
             
         }
@@ -45,4 +46,14 @@ public class ControlLocation {
         
         return newMapPosition;
     }
+    
+    public Location setLocation (String name){
+        
+        Location location = new Location();
+        location.setName(name);
+        
+        return location;
+    }
+    
 }
+
