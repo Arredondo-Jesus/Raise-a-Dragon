@@ -22,6 +22,7 @@ public class GameMenuView {
                 + "\nD - Dragon Menu"
                 + "\nB - Go Shopping"
                 + "\nH - Help Menu"
+                + "\nM - Map Menu"
                 + "\nE - Exit"
                 + "\n-------------------------------------------------------------";
         public void displayMenu() {
@@ -75,6 +76,9 @@ public class GameMenuView {
             case 'H': // Show help menu
                 this.helpMenu();
                 break;
+            case 'M': // Show map menu
+                this.mapMenu();
+                break;
             case 'E': // Exit the menu
                 return;
             default:
@@ -98,6 +102,11 @@ public class GameMenuView {
     private void viewDragonMenu() {
         DragonMenuView dragonView =new DragonMenuView();
         dragonView.displayMenu();
+    }
+
+    private void mapMenu() {
+        MapView mapView =new MapView();
+        mapView.displayMapMenu();
     }
     
 }
