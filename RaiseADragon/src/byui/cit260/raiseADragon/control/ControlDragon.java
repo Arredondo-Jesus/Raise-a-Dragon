@@ -14,7 +14,7 @@ import byui.cit260.raiseADragon.model.Dragon;
  */
 public class ControlDragon {
 
-    public BodyPart[] initializeDragon(String name, String color, int age, double size){
+    public BodyPart[] initializeDragon(String name, String color, double age, double size){
         Dragon dragon = new Dragon();
         
         dragon.setName(name);

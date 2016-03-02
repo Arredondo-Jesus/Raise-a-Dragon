@@ -8,15 +8,17 @@ package byui.cit260.raiseADragon.view;
 import byui.cit260.raiseADragon.control.*;
 import byui.cit260.raiseADragon.model.Player;
 import java.util.Scanner;
-import raiseadragon.RaiseADragon;
 
 /**
  *
  * @author John
  */
-public class MainMenuView {
+
+public class MainMenuView extends View {
     
-        private final String MENU = "\n"
+    
+    public MainMenuView(){
+        super("\n"
                 + "\n-------------------------------------------------------------"
                 + "\n| Main Menu                                               |"
                 + "\n-------------------------------------------------------------"
@@ -25,20 +27,11 @@ public class MainMenuView {
                 + "\nH - Get help on how to play the game"
                 + "\nS - Save Game"
                 + "\nE - Exit"
-                + "\n-------------------------------------------------------------";
-        
-        public void displayMenu() {
-                char selection = ' ';
-                do {
-                    System.out.println(MENU); // display the main menu
-                    
-                    String input = this.getInput(); // get the user's selection
-                    selection = input.charAt(0); // get first character of String
-                    
-                    this.doAction(selection); // do action based on selection
-                    
-                } while (selection != 'E');
-        }
+                + "\n-------------------------------------------------------------");
+    }
+    
+    
+            
     
     public void startProgram(){
     
@@ -56,7 +49,7 @@ public class MainMenuView {
         
         // Display the Main menu.
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.display();
         
 }
 
@@ -111,32 +104,11 @@ public class MainMenuView {
         System.out.println("\n\n=================================================");
     }
 
-    private String getInput() {
-        boolean valid = false;
-        String playersSelection = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+    @Override
+    public boolean doAction(String value) {
+        value=value.toUpperCase();
         
-        while(!valid) { //while a valid name has not been retrieved
-                
-                //prompt for the player's name
-                System.out.println("\n\nEnter the option below:");
-                
-                // get the name from the keyboard and trim off the blanks
-                playersSelection = keyboard.nextLine();
-                playersSelection = playersSelection.trim();
-                
-                // if the name is invalid (less than two characters in length)
-                if (playersSelection.length() < 1) {
-                    System.out.println("Option is not available.");
-                    continue; // and repeat again
-                }
-                break; //out of the (exit) the repetition
-        }
-        return playersSelection;
-    }
-
-    public void doAction(char choice) {
-        switch (choice) {
+        switch (value.charAt(0)) {
             case 'N': // create and start a new game
                 this.startNewGame();
                 break;
@@ -150,11 +122,12 @@ public class MainMenuView {
                 this.saveGame();
                 break;
             case 'E': // Exit the program
-                return;
+                return true;
             default:
                     System.out.println("\n*** Invalid selection *** Try again");
                     break;
         }
+        return false;
     }
 
     private void startNewGame() {
@@ -162,7 +135,7 @@ public class MainMenuView {
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     private void startExistingGame() {
@@ -177,7 +150,6 @@ public class MainMenuView {
         
         //display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
+        helpMenu.display();
     }
-    
 }

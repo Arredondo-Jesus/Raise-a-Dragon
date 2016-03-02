@@ -18,7 +18,7 @@ public class Dragon implements Serializable {
     private String name;
     private double size;
     private String color;
-    private int age;
+    private double age;
 
     public Dragon() {
     }
@@ -29,7 +29,7 @@ public class Dragon implements Serializable {
         hash = 89 * hash + Objects.hashCode(this.name);
         hash = 89 * hash + (int) (Double.doubleToLongBits(this.size) ^ (Double.doubleToLongBits(this.size) >>> 32));
         hash = 89 * hash + Objects.hashCode(this.color);
-        hash = 89 * hash + this.age;
+        hash = (int) (89 * hash + this.age);
         return hash;
     }
 
@@ -86,11 +86,11 @@ public class Dragon implements Serializable {
         this.color = color;
     }
 
-    public int getAge() {
+    public double getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(double age) {
         this.age = age;
     }
 

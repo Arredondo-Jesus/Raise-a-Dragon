@@ -11,9 +11,11 @@ import java.util.Scanner;
  *
  * @author John
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
     
-    private final String HELP_MENU = "\n"
+    public HelpMenuView(){
+    
+    super("\n"
                 + "\n-------------------------------------------------------------"
                 + "\n| Help Menu                                               |"
                 + "\n-------------------------------------------------------------"
@@ -23,46 +25,11 @@ public class HelpMenuView {
                 + "\nI - Items Help"
                 + "\nL - Location"
                 + "\nE - Exit"
-                + "\n-------------------------------------------------------------";
-        public void displayMenu() {
-                char selection = ' ';
-                do {
-                    System.out.println(HELP_MENU); // display the main menu
-                    
-                    String input = this.getInput(); // get the user's selection
-                    selection = input.charAt(0); // get first character of String
-                    
-                    this.doAction(selection); // do action based on selection
-                    
-                } while (selection != 'E');
-        }
-                
-    private String getInput() {
-        boolean valid = false;
-        String playersSelection = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
-        
-        while(!valid) { //while a valid name has not been retrieved
-                
-                //prompt for the player's name
-                System.out.println("\n\nEnter the option below:");
-                
-                // get the name from the keyboard and trim off the blanks
-                playersSelection = keyboard.nextLine();
-                playersSelection = playersSelection.trim();
-                
-                // if the name is invalid (less than two characters in length)
-                if (playersSelection.length() < 1) {
-                    System.out.println("Option is not available.");
-                    continue; // and repeat again
-                }
-                break; //out of the (exit) the repetition
-        }
-        return playersSelection;
+                + "\n-------------------------------------------------------------");
     }
     
-    public void doAction(char choice) {
-        switch (choice) {
+    public boolean doAction(String value) {
+        switch (value.charAt(0)) {
             case 'G': // Tell the goal of the game
                 this.getGoal();
                 break;
@@ -79,11 +46,12 @@ public class HelpMenuView {
                 this.getLocations();
                 break;
             case 'E': // Exit the menu
-                return;
+                return true;
             default:
                     System.out.println("\n*** Invalid selection *** Try again");
                     break;
         }
+        return false;
     }
 
     private void getGoal() {
