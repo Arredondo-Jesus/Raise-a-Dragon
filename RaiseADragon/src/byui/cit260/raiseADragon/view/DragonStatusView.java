@@ -25,7 +25,7 @@ public class DragonStatusView{
         int age =this.getAgeInput();
         int i;
         
-        BodyPart[] bodyParts = controlDragon.initializeDragon(name, color, age, size);
+        BodyPart[] bodyParts = controlDragon.initializeDragon(name, color, size, size);
         controlDragon.getStatus(bodyParts);
         
         

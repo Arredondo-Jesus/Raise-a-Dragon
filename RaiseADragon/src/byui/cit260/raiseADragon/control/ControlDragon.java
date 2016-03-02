@@ -55,7 +55,7 @@ public class ControlDragon {
         int i=0;
         
       
-        for (i=0;i<=bodyParts.length;i++){
+        for (i=0;i<bodyParts.length;i++){
             
             bodyParts[i].setValid(true);
             
