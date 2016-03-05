@@ -13,6 +13,16 @@ import byui.cit260.raiseADragon.model.Dragon;
  * @author Chuy
  */
 public class ControlDragon {
+    
+    public String ValidateInput(double input){
+        String error=null;
+        
+        if (input<0){
+            return "Input cannot be less than 0";
+        }
+        
+        return error;
+    }
 
     public BodyPart[] initializeDragon(String name, String color, double age, double size){
         Dragon dragon = new Dragon();
@@ -20,8 +30,9 @@ public class ControlDragon {
         dragon.setName(name);
         dragon.setColor(color);
         dragon.setAge(age);
+        this.ValidateInput(age);
         dragon.setSize(size);
-        
+        this.ValidateInput(size);
         BodyPart[] bodyParts = new BodyPart[10];
         
         bodyParts[0]= this.createBodyPart("Leg","Right front leg","Excellent",10);
