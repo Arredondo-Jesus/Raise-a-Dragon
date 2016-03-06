@@ -19,6 +19,7 @@ public class Dragon implements Serializable {
     private double size;
     private String color;
     private double age;
+    private BodyPart[] bodyParts = new BodyPart[10];
 
     public Dragon() {
     }
@@ -92,6 +93,14 @@ public class Dragon implements Serializable {
 
     public void setAge(double age) {
         this.age = age;
+    }
+
+    public BodyPart[] getBodyParts() {
+        return bodyParts;
+    }
+
+    public void setBodyParts(BodyPart[] bodyParts) {
+        this.bodyParts = bodyParts;
     }
 
     

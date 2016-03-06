@@ -30,13 +30,13 @@ public class ControlDragon {
         
         String name = null;
         String color =null;
-        
-        dragon.setName(name);
+              
         dragon.setColor(color);
         dragon.setAge(2);
         this.ValidateInput(1);
         dragon.setSize(1);
         this.ValidateInput(1);
+        
         BodyPart[] bodyParts = new BodyPart[10];
         
         bodyParts[0]= this.createBodyPart("Leg","Right front leg","Excellent",10);
@@ -50,8 +50,11 @@ public class ControlDragon {
         bodyParts[8]= this.createBodyPart("Tail","The Tail","Excellent",10);
         bodyParts[9]= this.createBodyPart("Body","The Body","Excellent",10);
         
+        
+        
         return bodyParts;
     }
+  
     
     public BodyPart createBodyPart(String name, String description, String status, int points){
         BodyPart bodyPart = new BodyPart();

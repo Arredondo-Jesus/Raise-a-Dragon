@@ -7,6 +7,7 @@ package byui.cit260.raiseADragon.view;
 
 import byui.cit260.raiseADragon.control.ControlDragon;
 import byui.cit260.raiseADragon.model.BodyPart;
+import byui.cit260.raiseADragon.model.Dragon;
 
 /**
  *
@@ -17,25 +18,29 @@ public class DragonStatusView{
     
     public void displayStatistics(){
         ControlDragon controlDragon = new ControlDragon();
+        Dragon dragon = null;
+        
         String partName=null;
         String partDescription=null;
         String partStatus=null;
         int partPoints=0;
+        BodyPart [] bodyParts = new BodyPart[10];
         
         int i;
         
-        
-        
-        BodyPart[] bodyParts = controlDragon.initializeDragon();
-        controlDragon.getStatus(bodyParts);
-        
+        bodyParts=controlDragon.initializeDragon();
         
         System.out.print("\n\t----------------------------------------------------"
                        +"\n\t! Dragon Statisticst"
                        +"\n\t-----------------------------------------------------");
         
+        
+        
+        
         System.out.println("\n\tPart Name" + "\tPart Description" + "\tPart Status"+"\tPart Points");
-                       for (i=0;i<bodyParts.length;i++){
+                       
+        
+                        for (i=0;i<bodyParts.length;i++){
                            
                            partName=bodyParts[i].getName();
                            partDescription=bodyParts[i].getDescription();
