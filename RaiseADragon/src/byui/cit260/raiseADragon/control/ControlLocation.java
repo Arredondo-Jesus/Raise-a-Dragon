@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.raiseADragon.control;
+
 import byui.cit260.raiseADragon.model.Location;
 
 /**
@@ -53,6 +54,30 @@ public class ControlLocation {
         location.setName(name);
         
         return location;
+    }
+
+    public void movetoHouse() {
+        System.out.println("\nYou have been moved to Your House");
+    }
+
+    public void movetoStore() {
+        System.out.println("\nYou have been moved to the Store");
+    }
+
+    public void movetoForest() {
+        System.out.println("\nYou have been moved to the Forest");
+    }
+
+    public void movetoMountain() {
+        System.out.println("\nYou have been moved to the Mountain");
+    }
+
+    public void movetoDesert() {
+        System.out.println("\nYou have been moved to the Desert");
+    }
+
+    public void movetoCave() {
+        System.out.println("\nYou have been moved to the Cave");
     }
     
 }
