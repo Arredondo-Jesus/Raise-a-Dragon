@@ -58,7 +58,8 @@ public class MapView extends View {
     }
 
     private void getMove() {
-        System.out.println("YOU WILL BE MOVED TO NEW AREA");
+        NewLocationView move = new NewLocationView();
+        move.display();
     }
     
 }
