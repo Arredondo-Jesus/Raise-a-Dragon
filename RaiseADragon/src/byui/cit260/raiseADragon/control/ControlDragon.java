@@ -13,6 +13,7 @@ import byui.cit260.raiseADragon.model.Dragon;
  * @author Chuy
  */
 public class ControlDragon {
+  
     
     public String ValidateInput(double input){
         String error=null;
@@ -24,27 +25,30 @@ public class ControlDragon {
         return error;
     }
 
-    public BodyPart[] initializeDragon(String name, String color, double age, double size){
+    public BodyPart[] initializeDragon(){
         Dragon dragon = new Dragon();
+        
+        String name = null;
+        String color =null;
         
         dragon.setName(name);
         dragon.setColor(color);
-        dragon.setAge(age);
-        this.ValidateInput(age);
-        dragon.setSize(size);
-        this.ValidateInput(size);
+        dragon.setAge(2);
+        this.ValidateInput(1);
+        dragon.setSize(1);
+        this.ValidateInput(1);
         BodyPart[] bodyParts = new BodyPart[10];
         
         bodyParts[0]= this.createBodyPart("Leg","Right front leg","Excellent",10);
         bodyParts[1]= this.createBodyPart("Leg","Left front leg","Excellent",10);
         bodyParts[2]= this.createBodyPart("Leg","Right back leg","Excellent",10);
         bodyParts[3]= this.createBodyPart("Leg","Left back Leg","Excellent",10);
-        bodyParts[4]= this.createBodyPart("Brain","Brain","Excellent",10);
-        bodyParts[5]= this.createBodyPart("Heart","Heart","Excellent",10);
+        bodyParts[4]= this.createBodyPart("Brain","The Brain","Excellent",10);
+        bodyParts[5]= this.createBodyPart("Heart","The Heart","Excellent",10);
         bodyParts[6]= this.createBodyPart("Wing","Right wing","Excellent",10);
         bodyParts[7]= this.createBodyPart("Wing","Left wing","Excellent",10);
-        bodyParts[8]= this.createBodyPart("Tail","Tail","Excellent",10);
-        bodyParts[9]= this.createBodyPart("Body","Body","Excellent",10);
+        bodyParts[8]= this.createBodyPart("Tail","The Tail","Excellent",10);
+        bodyParts[9]= this.createBodyPart("Body","The Body","Excellent",10);
         
         return bodyParts;
     }

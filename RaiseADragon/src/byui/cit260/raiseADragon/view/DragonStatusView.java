@@ -7,7 +7,6 @@ package byui.cit260.raiseADragon.view;
 
 import byui.cit260.raiseADragon.control.ControlDragon;
 import byui.cit260.raiseADragon.model.BodyPart;
-import java.util.Scanner;
 
 /**
  *
@@ -18,90 +17,41 @@ public class DragonStatusView{
     
     public void displayStatistics(){
         ControlDragon controlDragon = new ControlDragon();
+        String partName=null;
+        String partDescription=null;
+        String partStatus=null;
+        int partPoints=0;
         
-        String name = this.getNameInput();
-        String color = this.getColorInput();
-        double size =this.getSizeInput();
-        int age =this.getAgeInput();
         int i;
         
-        BodyPart[] bodyParts = controlDragon.initializeDragon(name, color, size, size);
+        
+        
+        BodyPart[] bodyParts = controlDragon.initializeDragon();
         controlDragon.getStatus(bodyParts);
         
         
-        System.out.print("\t----------------------------------------------------"
-                       +"\t! Dragon Statisticst"
-                       +"\t-----------------------------------------------------");
+        System.out.print("\n\t----------------------------------------------------"
+                       +"\n\t! Dragon Statisticst"
+                       +"\n\t-----------------------------------------------------");
         
+        System.out.println("\n\tPart Name" + "\tPart Description" + "\tPart Status"+"\tPart Points");
                        for (i=0;i<bodyParts.length;i++){
-                           System.out.println("\n\t"+bodyParts[i].getName()+" "+bodyParts[i].getDescription()+" "+bodyParts[i].getStatus()+" "+bodyParts[i].getPoints());
+                           
+                           partName=bodyParts[i].getName();
+                           partDescription=bodyParts[i].getDescription();
+                           partStatus=bodyParts[i].getStatus();
+                           partPoints=bodyParts[i].getPoints();
+                           
+                           System.out.println("\n\t"+partName+
+                                   "\t\t"+partDescription+
+                                   "\t\t"+partStatus+
+                                   "\t\t"+partPoints);
                        }
         
         
-        System.out.print("\t----------------------------------------------------"
-                       +""
-                       +"\t-----------------------------------------------------");
+        System.out.print("\n\t----------------------------------------------------"
+                        +"\n\t"
+                        +"\n\t----------------------------------------------------");
     }
     
-    private String getNameInput() {
-        String name = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
-         
-        //prompt for the player's name
-                System.out.println("\n\nEnter Dragon Name:");
-                
-                // get the name from the keyboard and trim off the blanks
-                name = keyboard.nextLine();
-                name = name.trim();
-        
-        return name;
-    }
-    
-    private String getColorInput() {
-        String color = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
-         
-        //prompt for the player's name
-                System.out.println("\n\nEnter Dragon's Color:");
-                
-                // get the name from the keyboard and trim off the blanks
-                color = keyboard.nextLine();
-                color = color.trim();
-        
-        return color;
-    }
-    
-    private double getSizeInput() {
-        double size = 0;
-        String input= null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
-         
-        //prompt for the player's name
-                System.out.println("\n\nEnter Dragon's Size:");
-                
-                // get the name from the keyboard and trim off the blanks
-                input = keyboard.nextLine();
-                input = input.trim();
-                
-                size= Double.parseDouble(input);
-        
-        return size;
-    }
-    
-    private int getAgeInput() {
-        int age = 0;
-        String input= null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
-         
-        //prompt for the player's name
-                System.out.println("\n\nEnter Dragon's Age:");
-                
-                // get the name from the keyboard and trim off the blanks
-                input = keyboard.nextLine();
-                input = input.trim();
-                
-                age = Integer.parseInt(input);
-        
-        return age;
-    }
 }

@@ -18,6 +18,7 @@ public class DragonMenuView extends View {
                 + "\n-------------------------------------------------------------"
                 + "\n| Dragon Menu                                               |"
                 + "\n-------------------------------------------------------------"
+                + "\nC - Create Dragon"
                 + "\nS - View Detaild Statistics"
                 + "\nP - Play"
                 + "\nT - Teach"
@@ -33,6 +34,9 @@ public class DragonMenuView extends View {
             
     public boolean doAction(String value) {
         switch (value.charAt(0)) {
+             case 'C': // view the details and statistics of game
+                this.createDragon();
+                break;
             case 'S': // view the details and statistics of game
                 this.viewDragonDetails();
                 break;
@@ -105,5 +109,13 @@ public class DragonMenuView extends View {
 
     private void helpMenu() {
         System.out.println("\n*** View Details did a thing.");
+    } 
+
+    private void createDragon() {
+        
+        CreateDragonView createDragonView = new CreateDragonView();
+        createDragonView.doAction("Name");
+        createDragonView.doAction("Color");
+        
     } 
 }
