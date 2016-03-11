@@ -22,6 +22,11 @@ public class Dragon implements Serializable {
     private BodyPart[] bodyParts = new BodyPart[10];
 
     public Dragon() {
+        this.name = "";
+        this.size = 0;
+        this.color = "";
+        this.age = 0;
+        this.bodyParts = null;
     }
 
     @Override

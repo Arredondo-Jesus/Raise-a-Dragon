@@ -12,9 +12,12 @@ import java.util.Objects;
  *
  * @author JESUS
  */
-public class Item implements Serializable {
+public enum Item{
+    food,
+    ball,
+    medicine;
 
-    private String name;
+ /**   private String name;
     private String description;
     private double price;
 
@@ -79,6 +82,6 @@ public class Item implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-    
+    **/
     
 }

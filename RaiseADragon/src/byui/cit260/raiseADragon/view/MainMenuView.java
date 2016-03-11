@@ -8,6 +8,7 @@ package byui.cit260.raiseADragon.view;
 import byui.cit260.raiseADragon.control.*;
 import byui.cit260.raiseADragon.model.Player;
 import java.util.Scanner;
+import raiseadragon.RaiseADragon;
 
 /**
  *
@@ -131,7 +132,7 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        //ControlGame.createNewGame(RaiseADragon.getPlayer());
+        ControlGame.createNewGame(RaiseADragon.getPlayer());
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();

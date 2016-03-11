@@ -28,7 +28,15 @@ public class ControlInventory {
         }
         
         //Compares the name attribute of the received object with a valid item name
-        if(!item.getName().equals(nameOfItem)){
+        if(!Item.food.equals(nameOfItem)){
+            return -1;
+        }
+        
+        if(!Item.ball.equals(nameOfItem)){
+            return -1;
+        }
+        
+        if(!Item.medicine.equals(nameOfItem)){
             return -1;
         }
         
