@@ -29,6 +29,10 @@ public class Location implements Serializable{
     private Point positionInMap;
     private String description;
     private String name;
+    private int row;
+    private int column;
+    boolean visited;
+    private Scene scene;
     
     public Location(){
         
@@ -55,12 +59,52 @@ public class Location implements Serializable{
         this.name = name;
     }
 
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+    
+    
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.positionInMap);
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 47 * hash + Objects.hashCode(this.positionInMap);
+        hash = 47 * hash + Objects.hashCode(this.description);
+        hash = 47 * hash + Objects.hashCode(this.name);
+        hash = 47 * hash + this.row;
+        hash = 47 * hash + this.column;
+        hash = 47 * hash + (this.visited ? 1 : 0);
         return hash;
     }
 
@@ -76,6 +120,15 @@ public class Location implements Serializable{
             return false;
         }
         final Location other = (Location) obj;
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
+        if (this.visited != other.visited) {
+            return false;
+        }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
@@ -90,7 +143,6 @@ public class Location implements Serializable{
 
     @Override
     public String toString() {
-        return "Location{" + "positionInMap=" + positionInMap + ", description=" + description + ", name=" + name + '}';
+        return "Location{" + "positionInMap=" + positionInMap + ", description=" + description + ", name=" + name + ", row=" + row + ", column=" + column + ", visited=" + visited + '}';
     }
-    
 }

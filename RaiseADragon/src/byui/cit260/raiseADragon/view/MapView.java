@@ -27,7 +27,7 @@ public class MapView extends View {
             public boolean doAction(String value) {
                 switch (value.charAt(0)) {
                     case 'V': // View the world map
-                            this.getMapView();
+                            this.displayMap();
                             break;
                     case 'G': // View information on current location
                             this.getLocationInfo();
@@ -44,12 +44,8 @@ public class MapView extends View {
                 return false;
             }
 
-    private void getMapView() {
-        MapFullView mapView = new MapFullView();
-        mapView.viewFullMap();
-        
-        //display the Map
-        
+    private void displayMap() {
+        System.out.println("This is the display map view functionality");
     }
 
     private void getLocationInfo() {

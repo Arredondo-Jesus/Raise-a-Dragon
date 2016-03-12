@@ -63,6 +63,14 @@ public class ControlGame {
         System.out.println("THIS IS A WORK IN PROGRESS AND I WILL DESTROY ALL MANKIND.");
         return null;
     }
-  
- 
+
+    public static void assignScenesToLocations(Map map, Scene[] scenes){
+        Location[][] locations = map.getLocations();
+        
+        //start point
+        locations[0][0].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][1].setScene(scenes[SceneType.forest.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.start.ordinal()]);
+        locations[0][3].setScene(scenes[SceneType.ocean.ordinal()]);
+    }
 }

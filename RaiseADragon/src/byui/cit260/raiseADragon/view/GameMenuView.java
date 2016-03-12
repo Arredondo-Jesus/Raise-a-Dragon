@@ -58,17 +58,8 @@ public class GameMenuView extends View {
     }
 
     private void viewInventory() {
-        // get the sorted list of inventory items for the current game
-        Inventory[] inventory = ControlGame.getSortedInventoryList();
-        
-        System.out.println("\nList of Inventory Items");
-        System.out.println("Description" + "\t" + "Required" + "\t" + "In Stock");
-        
-        //fore each inventory item
-        for (Inventory inventoryItem : inventory) {
-            //Display the description, the required amount and amount in stock
-            System.out.println(inventoryItem.getName() + "\t   " +  inventoryItem.getDescription() + "\t   " + inventoryItem.getAmountOfMoney());
-        }
+        System.out.println("****This is calling the viewInventory function");
+       
     }
 
     private void goShopping() {
