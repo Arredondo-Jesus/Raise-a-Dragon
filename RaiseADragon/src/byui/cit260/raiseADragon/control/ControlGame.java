@@ -80,6 +80,11 @@ public class ControlGame {
         locations[0][0].setScene(scenes[SceneType.desert.ordinal()]);
         locations[0][1].setScene(scenes[SceneType.forest.ordinal()]);
         locations[0][2].setScene(scenes[SceneType.start.ordinal()]);
-        locations[0][3].setScene(scenes[SceneType.ocean.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.ocean.ordinal()]);
+        locations[1][1].setScene(scenes[SceneType.mountain.ordinal()]);
+        locations[1][2].setScene(scenes[SceneType.cave.ordinal()]);
+        locations[2][0].setScene(scenes[SceneType.store.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.house.ordinal()]);
+        locations[2][2].setScene(scenes[SceneType.river.ordinal()]);
     }
 }

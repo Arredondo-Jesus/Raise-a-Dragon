@@ -5,7 +5,12 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.raiseADragon.control.ControlGame;
 import byui.cit260.raiseADragon.control.ControlLocation;
+import byui.cit260.raiseADragon.control.ControlMap;
+import byui.cit260.raiseADragon.model.Location;
+import byui.cit260.raiseADragon.model.Map;
+import byui.cit260.raiseADragon.model.Scene;
 
 /**
  *
@@ -14,34 +19,16 @@ import byui.cit260.raiseADragon.control.ControlLocation;
 public class MapFullView {
     
     
-    public String viewFullMap() {
-        ControlLocation mapFullView = new ControlLocation();
-        mapFullView.setLocation("House");
+    public void viewFullMap() {
+        Map map = new Map();
+        Location[][] location = map.getLocations();
         
-        if(("House".equals(mapFullView))){
-            return "Placeholder Text for the map";
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j<3; j++) {
+                System.out.println(location[j][i]);
+            }
+            
         }
-        
-        if(("Store".equals(mapFullView))){
-            return "Placeholder Text for the map";
-        }
-        
-        if(("Forest".equals(mapFullView))){
-            return "Placeholder Text for the map";
-        }
-        
-        if(("Mountain".equals(mapFullView))){
-            return "Placeholder Text for the map";
-        }
-        
-        if(("Desert".equals(mapFullView))){
-            return "Placeholder Text for the map";
-        }
-        
-        if(("Cave".equals(mapFullView))){
-            return "Placeholder Text for the map";
-        }
-            return "Placeholder text for the map";
-    }
     
+    }
 }

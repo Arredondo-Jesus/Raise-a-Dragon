@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.raiseADragon.model.Location;
 import java.util.Scanner;
 /**
  *
@@ -45,7 +46,8 @@ public class MapView extends View {
             }
 
     private void displayMap() {
-        System.out.println("This is the display map view functionality");
+        MapFullView map = new MapFullView();
+        map.viewFullMap();
     }
 
     private void getLocationInfo() {

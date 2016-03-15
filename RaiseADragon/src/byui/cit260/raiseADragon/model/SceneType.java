@@ -20,6 +20,10 @@ public enum SceneType {
     desert,
     ocean,
     mountain,
-    forest
+    forest,
+    cave,
+    store,
+    house
+    
 }
 
