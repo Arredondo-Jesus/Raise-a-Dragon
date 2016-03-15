@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 package byui.cit260.raiseADragon.control;
+import byui.cit260.raiseADragon.model.Inventory;
 import byui.cit260.raiseADragon.model.Item;
+import java.util.ArrayList;
 
 /**
  *
  * @author Chuy
  */
+
+
 public class ControlInventory {
     
     /*
@@ -20,44 +24,28 @@ public class ControlInventory {
      * @return 
     */
     
-    public double calcCostOfItem(int number, double unitCost, Item item, String nameOfItem) {
-        
+    public ArrayList addItem(ArrayList<Inventory> inventory, Inventory item){
+        inventory.add(item);
+        return inventory;
+    }
+    
+    public double calcCostOfItem(ArrayList<Inventory> inventory, int i) {
+        Inventory item=inventory.get(i);
       //Checks if the received item object is not an empty object  
-        if(item==null){
-            return -1;
-        }
         
-        //Compares the name attribute of the received object with a valid item name
-        if(!Item.food.equals(nameOfItem)){
-            return -1;
-        }
-        
-        if(!Item.ball.equals(nameOfItem)){
-            return -1;
-        }
-        
-        if(!Item.medicine.equals(nameOfItem)){
-            return -1;
-        }
-        
-        //Returns an error if the number of items are 0
-        if (number < 0){
-            return -1;
-        }
         
         //Validates if the unit cost is not negative and if it not greater than 9999
-        if(unitCost < 0 || unitCost > 9999){
+        if( item.getAmountOfMoney() < 0 || item.getAmountOfMoney() > 9999){
             return -1;
         }
         
         // Calculates total cost
         double totalCost;
-        totalCost = totalCost =+ (unitCost * number);
+        totalCost = totalCost =+ (item.getAmountOfMoney() * item.getQuantity());
         
         //Returns the totalCost of the items
         return totalCost;
     }
-    
 }
 
 

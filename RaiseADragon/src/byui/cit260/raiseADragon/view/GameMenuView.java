@@ -58,8 +58,9 @@ public class GameMenuView extends View {
     }
 
     private void viewInventory() {
-        System.out.println("****This is calling the viewInventory function");
-       
+        //System.out.println("****This is calling the viewInventory function");
+       InventoryView inventoryView = new InventoryView();
+       inventoryView.viewInventory();
     }
 
     private void goShopping() {

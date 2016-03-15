@@ -6,6 +6,7 @@
 package byui.cit260.raiseADragon.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -22,7 +23,7 @@ public class Game implements Serializable{
     
     private Player player;
     private Map map;
-    private Inventory[] inventory;
+    private ArrayList<Inventory> inventory;
     private Dragon dragon;
 
     public Game() {
@@ -78,11 +79,11 @@ public class Game implements Serializable{
         this.map = map;
     }
 
-    public Inventory[] getInventory() {
+    public ArrayList getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory[] inventory) {
+    public void setInventory(ArrayList<Inventory> inventory) {
         this.inventory = inventory;
     }
 

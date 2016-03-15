@@ -17,6 +17,7 @@ public class Inventory implements Serializable{
     private double amountOfMoney;
     private String name;
     private String description;
+    private int quantity;
     
     public Inventory() {
     }
@@ -44,6 +45,16 @@ public class Inventory implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    
 
     @Override
     public int hashCode() {

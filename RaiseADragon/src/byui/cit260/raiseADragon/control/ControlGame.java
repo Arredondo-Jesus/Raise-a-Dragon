@@ -6,6 +6,8 @@
 package byui.cit260.raiseADragon.control;
 
 import byui.cit260.raiseADragon.model.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import raiseadragon.RaiseADragon;
 
 /**
@@ -22,7 +24,8 @@ public class ControlGame {
         game.setPlayer(player); // save player in game
         
         //create the inventory list and save in the game
-        Inventory[] inventoryList = ControlGame.createInventoryList();
+        //Inventory[] inventoryList = ControlGame.createInventoryList();
+        ArrayList<Inventory> inventoryList = ControlGame.createInventoryList();
         game.setInventory(inventoryList);
         
         Dragon dragon = new Dragon(); // create new dragon
@@ -30,38 +33,44 @@ public class ControlGame {
         
         Map map = ControlMap.createMap(); // create and initialize new map
         game.setMap(map);
+        
     }
     
-    public static Inventory[] createInventoryList() {
+    public static ArrayList createInventoryList() {
         
         // created array(list) of inventory items
-        Inventory[] inventory =
-                new Inventory[3];
+        ArrayList<Inventory> inventory =
+                new ArrayList<Inventory>();
         
         Inventory food = new Inventory();
         food.setDescription("Gives Food");
         food.setAmountOfMoney(3.0);
+        food.setQuantity(1);
         food.setName("food");
-        inventory[Item.food.ordinal()] = food;
+        inventory.add(food);
         
         Inventory ball = new Inventory();
         ball.setDescription("Dragon Loves Ball.");
         ball.setAmountOfMoney(5.0);
+        ball.setQuantity(1);
         ball.setName("Ball");
-        inventory[Item.ball.ordinal()] = ball;
+        inventory.add(ball);
         
         Inventory medicine = new Inventory();
         medicine.setDescription("Cure Dragon of Pain or Ailment.");
         medicine.setAmountOfMoney(30.0);
+        medicine.setQuantity(1);
         medicine.setName("Medicine");
-        inventory[Item.medicine.ordinal()] = medicine;
+        inventory.add(medicine);
         
         return inventory;
     }
 
-    public static Inventory[] getSortedInventoryList() {
-        System.out.println("THIS IS A WORK IN PROGRESS AND I WILL DESTROY ALL MANKIND.");
-        return null;
+    public static ArrayList getSortedInventoryList() {
+        //System.out.println("THIS IS A WORK IN PROGRESS AND I WILL DESTROY ALL MANKIND.");
+        ArrayList<Inventory> inventory = ControlGame.createInventoryList();
+        //Inventory[] inventory = ControlGame.createInventoryList();
+        return inventory;
     }
 
     public static void assignScenesToLocations(Map map, Scene[] scenes){
