@@ -69,7 +69,9 @@ public class GameMenuView extends View {
     }
 
     private void goShopping() {
-        System.out.println("\n*** View Details did a thing.");
+        //System.out.println("\n*** View Details did a thing.");
+        ShopingView shoping = new ShopingView();
+        shoping.display();
     }
 
     private void helpMenu() {

@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 import byui.cit260.exceptions.InventoryControlException;
+import byui.cit260.raiseADragon.model.Food;
 import byui.cit260.raiseADragon.model.Inventory;
 import byui.cit260.raiseADragon.model.Item;
 import java.util.ArrayList;
@@ -25,7 +26,9 @@ public class ControlInventory {
      * @return 
     */
     
-    public static ArrayList addItem(ArrayList<Inventory> inventory, Inventory item){
+    public static ArrayList addItem(Inventory item){
+        ArrayList<Inventory> inventory = ControlGame.getSortedInventoryList();
+        Food food = ControlFood.setFood("Chicken","Chicken",item.getQuantity(),0.0);
         inventory.add(item);
         return inventory;
     }
