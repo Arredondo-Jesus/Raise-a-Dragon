@@ -5,11 +5,13 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.raiseADragon.model.Actor;
 import byui.cit260.raiseADragon.model.Game;
 import byui.cit260.raiseADragon.model.Location;
 import byui.cit260.raiseADragon.model.Map;
 import byui.cit260.raiseADragon.model.Scene;
 import byui.cit260.raiseADragon.model.SceneType;
+import byui.cit260.raiseADragon.model.Point;
 import raiseadragon.RaiseADragon;
 
 /**
@@ -63,6 +65,20 @@ public class ControlMap {
         
         return scenes;
     }
+
+    public static int moveActorsToLocaiton(Actor actor, Point coordinates) {
+      Map map = RaiseADragon.getCurrentGame().getMap();
+      int newRow = coordinates.getX()-1;
+      int newColumn = coordinates.getY()-1;
+      
+      if (newRow < 0 || newRow >= map.getNoOfRows() ||
+         newColumn < 0 || newColumn >= map.getNoOfColumns()){
+          return -1;
+      }
+      return 0;
+    }
+    
+    
   
    /** static void moveEntityToStartingLocation(Map map) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

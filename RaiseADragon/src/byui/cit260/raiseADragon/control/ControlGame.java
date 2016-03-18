@@ -34,6 +34,11 @@ public class ControlGame {
         Map map = ControlMap.createMap(); // create and initialize new map
         game.setMap(map);
         
+        
+        
+        //Move actors to starting point in the map
+        //ControlMap.moveActorsToLocaiton();
+        
     }
     
     public static ArrayList createInventoryList() {
@@ -44,14 +49,14 @@ public class ControlGame {
         
         Inventory food = new Inventory();
         food.setDescription("Gives Food");
-        food.setAmountOfMoney(3.0);
+        food.setAmountOfMoney(110000.0);
         food.setQuantity(1);
         food.setName("food");
         inventory.add(food);
         
         Inventory ball = new Inventory();
         ball.setDescription("Dragon Loves Ball.");
-        ball.setAmountOfMoney(5.0);
+        ball.setAmountOfMoney(3.0);
         ball.setQuantity(1);
         ball.setName("Ball");
         inventory.add(ball);
@@ -62,7 +67,7 @@ public class ControlGame {
         medicine.setQuantity(1);
         medicine.setName("Medicine");
         inventory.add(medicine);
-        
+
         return inventory;
     }
 

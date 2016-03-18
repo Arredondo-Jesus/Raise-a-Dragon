@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.raiseADragon.model.BodyPart;
 import byui.cit260.raiseADragon.model.Dragon;
 
@@ -68,7 +69,7 @@ public class ControlDragon {
     }
     
     
-    public void getStatus(BodyPart[] bodyParts){
+    public void getStatus(BodyPart[] bodyParts) throws BodyPartControlException{
         String status= null;
         int i=0;
         

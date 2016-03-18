@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.InventoryControlException;
 import byui.cit260.raiseADragon.control.ControlGame;
 import byui.cit260.raiseADragon.model.Inventory;
 import java.util.Scanner;
@@ -59,8 +60,12 @@ public class GameMenuView extends View {
 
     private void viewInventory() {
         //System.out.println("****This is calling the viewInventory function");
-       InventoryView inventoryView = new InventoryView();
+       try{
+        InventoryView inventoryView = new InventoryView();
        inventoryView.viewInventory();
+       }catch(InventoryControlException e){
+           System.out.println(e);
+       }
     }
 
     private void goShopping() {

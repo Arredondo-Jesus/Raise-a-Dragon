@@ -20,7 +20,7 @@ public class Map implements Serializable{
     private int noOfRows;
     private int noOfColumns;
     private Location[][] locations;
-
+    
     public Map() {
     }
 

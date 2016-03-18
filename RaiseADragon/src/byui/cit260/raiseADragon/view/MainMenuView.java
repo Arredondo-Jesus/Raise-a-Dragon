@@ -136,7 +136,13 @@ public class MainMenuView extends View {
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        try{
+            gameMenu.display();
+        }catch(Throwable te){
+            System.out.println(te);
+            te.printStackTrace();
+            gameMenu.display();
+        }
     }
 
     private void startExistingGame() {

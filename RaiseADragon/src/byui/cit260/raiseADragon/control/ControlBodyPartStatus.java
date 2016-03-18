@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.raiseADragon.model.BodyPart;
 
 /**
@@ -14,25 +15,29 @@ import byui.cit260.raiseADragon.model.BodyPart;
 public class ControlBodyPartStatus {
     
     
-    public String calcBodyPartStatus(BodyPart bodyPart){
+    public String calcBodyPartStatus(BodyPart bodyPart) throws BodyPartControlException{
         String status = null;
         int points= bodyPart.getPoints();
         boolean valid = bodyPart.isValid();
         
         if (points < 0){
-            return "Error: Points cannot be less than 0";
+            throw new BodyPartControlException("The number of points to verify"
+                    + "the wellness of a body part cannot be less than 0");
         }
         
         if (points > 10){
-            return "Error: Points cannot be greater than 10";
+            throw new BodyPartControlException("The number of point to verify"
+                    + "the wellness of the body part cannot be grater than 10");
         }
         
         if (bodyPart == null){
-            return "Body Part is missing";
+             throw new BodyPartControlException("There cannot be null values for"
+                     + "your dragon's body parts");
         }
         
         if (valid == false){
-            return "Error: Invalid Body Part";
+             throw new BodyPartControlException("The body part passed through the "
+                     + "calcBodyPart function must be a valid body part");
         }
         
         

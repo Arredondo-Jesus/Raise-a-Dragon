@@ -5,7 +5,9 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.InventoryControlException;
 import byui.cit260.raiseADragon.control.ControlGame;
+import byui.cit260.raiseADragon.control.ControlInventory;
 import byui.cit260.raiseADragon.model.Inventory;
 import java.util.ArrayList;
 
@@ -15,8 +17,11 @@ import java.util.ArrayList;
  */
 public class InventoryView {
     
-    public void viewInventory(){
+    public void viewInventory() throws InventoryControlException{
         String tab = null;
+        int i=0;
+        double totalCost = 0;
+        
         ArrayList<Inventory> inventory = ControlGame.getSortedInventoryList();
            
         System.out.println("\nList of invetory items");
@@ -26,6 +31,10 @@ public class InventoryView {
                     + "Quantity");
         
         for (Inventory item: inventory){ // for(Location location : locations)
+            
+            totalCost=ControlInventory.calcCostOfItem(inventory, i);
+            
+            i=i++;
             
             if (item.toString().length()<=4){
                 tab="\t\t";
@@ -38,5 +47,7 @@ public class InventoryView {
                     + item.getAmountOfMoney()+tab
                     + item.getQuantity());
         }
+        
+        System.out.println("\nThe total cost is: "+ totalCost);
     }
 }

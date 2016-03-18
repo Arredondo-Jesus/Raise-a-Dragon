@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.BodyPartControlException;
 import java.util.Scanner;
 
 /**

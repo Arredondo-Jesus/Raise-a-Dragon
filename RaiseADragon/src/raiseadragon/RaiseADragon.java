@@ -42,8 +42,15 @@ public class RaiseADragon {
         
         // create MainMenuView and start the program
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.startProgram();
         
+        try{
+            mainMenuView.startProgram();
+            mainMenuView.display();
+        }catch(Throwable te){
+            System.out.println(te);
+            te.printStackTrace();
+            mainMenuView.display();
+        }
         /*Food food = new Food();
         food.setDescription("Food");
         food.setName("Candy");

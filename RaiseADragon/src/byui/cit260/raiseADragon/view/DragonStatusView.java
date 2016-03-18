@@ -41,7 +41,7 @@ public class DragonStatusView{
                        
         
                         for (i=0;i<bodyParts.length;i++){
-                           
+
                            partName=bodyParts[i].getName();
                            partDescription=bodyParts[i].getDescription();
                            partStatus=bodyParts[i].getStatus();
