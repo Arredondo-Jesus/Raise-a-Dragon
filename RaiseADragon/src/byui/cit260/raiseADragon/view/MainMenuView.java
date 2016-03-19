@@ -5,9 +5,12 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.PlayerException;
 import byui.cit260.raiseADragon.control.*;
 import byui.cit260.raiseADragon.model.Player;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import raiseadragon.RaiseADragon;
 
 /**
@@ -43,7 +46,12 @@ public class MainMenuView extends View {
         String playersName = this.getPlayersName();
         
         // Create and save the palyer object
-        Player player = ProgramControl.createPlayer(playersName);
+        Player player = null;
+        try {
+            player = ProgramControl.createPlayer(playersName);
+        } catch (PlayerException ex) {
+            System.out.println(ex);
+        }
         
         // Display a personalized welcome message
         this.displayWelcomeMessage(player);

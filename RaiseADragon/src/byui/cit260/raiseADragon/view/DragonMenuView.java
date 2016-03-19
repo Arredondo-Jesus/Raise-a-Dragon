@@ -7,6 +7,8 @@ package byui.cit260.raiseADragon.view;
 
 import byui.cit260.exceptions.BodyPartControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,47 +36,52 @@ public class DragonMenuView extends View {
     }
             
     public boolean doAction(String value) {
-        switch (value.charAt(0)) {
-             case 'C': // view the details and statistics of game
-                this.createDragon();
-                break;
-            case 'S': // view the details and statistics of game
-                this.viewDragonDetails();
-                break;
-            case 'P': // Play with dragon
-                this.playDragon();
-                break;
-            case 'T': // Teaches dragon
-                this.teachDragon();
-                break;
-            case 'G': // Heals dragon
-                this.healDragon();
-                break;
-            case 'W': // Wash dragon
-                this.washDragon();
-                break;
-            case 'F': // Feed dragon
-                this.feedDragon();
-                break;
-            case 'L': // Go to bed
-                this.sleepDragon();
-                break;
-            case 'J': // Teach dragon to fly
-                this.teachToFly();
-                break;
-            case 'H': // Show help menu
-                this.helpMenu();
-                break;
-            case 'E': // Exit the menu
-                return true;
-            default:
+        try {
+            switch (value.charAt(0)) {
+                case 'C': // view the details and statistics of game
+                    this.createDragon();
+                    break;
+                case 'S': // view the details and statistics of game
+                    this.viewDragonDetails();
+                    break;
+                case 'P': // Play with dragon
+                    this.playDragon();
+                    break;
+                case 'T': // Teaches dragon
+                    this.teachDragon();
+                    break;
+                case 'G': // Heals dragon
+                    this.healDragon();
+                    break;
+                case 'W': // Wash dragon
+                    this.washDragon();
+                    break;
+                case 'F': // Feed dragon
+                    this.feedDragon();
+                    break;
+                case 'L': // Go to bed
+                    this.sleepDragon();
+                    break;
+                case 'J': // Teach dragon to fly
+                    this.teachToFly();
+                    break;
+                case 'H': // Show help menu
+                    this.helpMenu();
+                    break;
+                case 'E': // Exit the menu
+                    return true;
+                default:
                     System.out.println("\n*** Invalid selection *** Try again");
                     break;
+            }
+            return false;
+        } catch (BodyPartControlException ex) {
+           System.out.println(ex);
         }
         return false;
     }
 
-    private void viewDragonDetails() {
+    private void viewDragonDetails() throws BodyPartControlException{
         
         DragonStatusView dragonStatsView = new DragonStatusView();
         dragonStatsView.displayStatistics();

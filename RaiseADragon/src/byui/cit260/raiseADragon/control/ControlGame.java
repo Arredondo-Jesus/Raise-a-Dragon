@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.exceptions.InventoryControlException;
 import byui.cit260.raiseADragon.model.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,7 +42,7 @@ public class ControlGame {
         
     }
     
-    public static ArrayList createInventoryList() {
+    public static ArrayList createInventoryList(){
         
         // created array(list) of inventory items
         ArrayList<Inventory> inventory =

@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.exceptions.PlayerException;
 import byui.cit260.raiseADragon.model.Player;
 import raiseadragon.RaiseADragon;
 
@@ -14,10 +15,10 @@ import raiseadragon.RaiseADragon;
  */
 public class ProgramControl {
     
-    public static Player createPlayer(String name){
+    public static Player createPlayer(String name) throws PlayerException{
         
         if (name == null) {
-            return null;
+            throw new PlayerException("The name of the player cannot be empty");
         }
         
         Player player = new Player();

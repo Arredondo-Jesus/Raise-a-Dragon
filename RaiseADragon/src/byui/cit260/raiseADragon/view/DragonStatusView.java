@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.raiseADragon.control.ControlDragon;
 import byui.cit260.raiseADragon.model.BodyPart;
 import byui.cit260.raiseADragon.model.Dragon;
@@ -16,7 +17,7 @@ import byui.cit260.raiseADragon.model.Dragon;
 public class DragonStatusView{
     //ControlDragon myDragon = new ControlDragon();
     
-    public void displayStatistics(){
+    public void displayStatistics () throws BodyPartControlException{
         ControlDragon controlDragon = new ControlDragon();
         Dragon dragon = null;
         
@@ -41,11 +42,19 @@ public class DragonStatusView{
                        
         
                         for (i=0;i<bodyParts.length;i++){
-
-                           partName=bodyParts[i].getName();
-                           partDescription=bodyParts[i].getDescription();
-                           partStatus=bodyParts[i].getStatus();
-                           partPoints=bodyParts[i].getPoints();
+                           
+                            try{
+                                
+                                partName=bodyParts[i].getName();
+                                partDescription=bodyParts[i].getDescription();
+                                partStatus=bodyParts[i].getStatus();
+                                partPoints=bodyParts[i].getPoints();
+                           
+                            }catch(ArrayIndexOutOfBoundsException e){
+                               
+                                System.out.println("The number of body Parts has exceeded "
+                                       + "the size of the array" + e);
+                           }
                            
                            System.out.println("\n\t"+partName+
                                    "\t\t"+partDescription+
