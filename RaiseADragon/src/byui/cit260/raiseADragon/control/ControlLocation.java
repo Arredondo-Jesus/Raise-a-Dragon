@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.exceptions.ControlLocationException;
 import byui.cit260.raiseADragon.model.Location;
 
 /**
@@ -20,25 +21,30 @@ public class ControlLocation {
      * @param name
      * @param newLocation
      * @return
+     * @throws byui.cit260.exceptions.ControlLocationException
      */
 
     
-    public double moveToLocation(int locationNumber, int positionInMap, Location name, String newLocation) {
-        
+    public double moveToLocation(int locationNumber, int positionInMap, String newLocation) throws ControlLocationException {
+        try{
         //Find out if the selected location is null
         if(newLocation==null){
-            return -1;
+            throw new ControlLocationException("The selection cannot be blank.");
         }
         
         //Find out if the current location is the same as the destination input
         if(locationNumber==positionInMap){
-            return -1;
+            throw new ControlLocationException("You're already here.");
         }
         
         //Find out if the location is within the parameters of places to go
         if(locationNumber < 0 || locationNumber > 25){
-            return -1;
+            throw new ControlLocationException("Please pick a different option. The option you selected is not a destination possibility.");
             
+        }
+        
+        } catch (ControlLocationException ex) {
+            System.out.println(ex);
         }
         
         //Create a dependant variable to act as a return value.

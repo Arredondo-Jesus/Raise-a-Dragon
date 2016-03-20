@@ -5,7 +5,9 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.ControlLocationException;
 import byui.cit260.raiseADragon.control.ControlLocation;
+import byui.cit260.raiseADragon.model.Location;
 
 /**
  *
@@ -32,6 +34,7 @@ public class NewLocationView extends View {
     
     @Override
     public boolean doAction(String value){
+        try{
         switch (value.charAt(0)) {
             case 'H':
                 this.getHouse();
@@ -51,11 +54,20 @@ public class NewLocationView extends View {
             case 'C':
                 this.getCave();
                 break;
+            case 'P':
+                this.getError();
+                break;
             case 'E':
                 return true;
+
             default:
                     System.out.println("\n*** Invalid selection *** Try again");
                     break;
+        }
+        return false;
+        
+        } catch (ControlLocationException ex) {
+                    System.out.println("");
         }
         return false;
     }
@@ -88,5 +100,10 @@ public class NewLocationView extends View {
     private void getCave() {
         ControlLocation house = new ControlLocation();
         house.movetoCave();
+    }
+
+    private void getError() throws ControlLocationException {
+        ControlLocation error = new ControlLocation();
+        error.moveToLocation(1,1, "stuff");
     }
 }
