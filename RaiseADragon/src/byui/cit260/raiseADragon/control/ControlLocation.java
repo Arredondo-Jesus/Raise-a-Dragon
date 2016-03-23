@@ -6,12 +6,14 @@
 package byui.cit260.raiseADragon.control;
 
 import byui.cit260.raiseADragon.model.Location;
+import byui.cit260.raiseADragon.view.View;
+
 
 /**
  *
  * @author Chuy
  */
-public class ControlLocation {
+public class ControlLocation extends View{
     
     /**
      *
@@ -57,27 +59,32 @@ public class ControlLocation {
     }
 
     public void movetoHouse() {
-        System.out.println("\nYou have been moved to Your House");
+        console.println("\nYou have been moved to Your House");
     }
 
     public void movetoStore() {
-        System.out.println("\nYou have been moved to the Store");
+        console.println("\nYou have been moved to the Store");
     }
 
     public void movetoForest() {
-        System.out.println("\nYou have been moved to the Forest");
+        console.println("\nYou have been moved to the Forest");
     }
 
     public void movetoMountain() {
-        System.out.println("\nYou have been moved to the Mountain");
+        console.println("\nYou have been moved to the Mountain");
     }
 
     public void movetoDesert() {
-        System.out.println("\nYou have been moved to the Desert");
+        console.println("\nYou have been moved to the Desert");
     }
 
     public void movetoCave() {
-        System.out.println("\nYou have been moved to the Cave");
+        console.println("\nYou have been moved to the Cave");
+    }
+
+    @Override
+    public boolean doAction(String Value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

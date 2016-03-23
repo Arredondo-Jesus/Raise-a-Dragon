@@ -49,7 +49,7 @@ public class ShopingView extends View {
             case 'E': // Exit the menu
                 return true;
             default:
-                    System.out.println("\n*** Invalid selection *** Try again");
+                    console.println("\n*** Invalid selection *** Try again");
                     break;
         }
         return false;

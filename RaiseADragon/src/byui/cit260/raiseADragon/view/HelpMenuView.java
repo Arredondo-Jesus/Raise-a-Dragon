@@ -48,30 +48,30 @@ public class HelpMenuView extends View {
             case 'E': // Exit the menu
                 return true;
             default:
-                    System.out.println("\n*** Invalid selection *** Try again");
+                    console.println("\n*** Invalid selection *** Try again");
                     break;
         }
         return false;
     }
 
     private void getGoal() {
-        System.out.println("The goal of the game is to raise a dragon through means of playing, feeding, healing, and teaching the dragon so it can become big and strong and finally be able to fly!");
+        console.println("The goal of the game is to raise a dragon through means of playing, feeding, healing, and teaching the dragon so it can become big and strong and finally be able to fly!");
     }
 
     private void getHelp() {
-        System.out.println("Do your best to interact with the dragon, find out what works, and find out what you shouldn't do. It is mainly trial and error, but if you see the dragon is hurt, in pain, or not doing well, then you can check the status of the dragon and use items and interactions accordingly.");
+        console.println("Do your best to interact with the dragon, find out what works, and find out what you shouldn't do. It is mainly trial and error, but if you see the dragon is hurt, in pain, or not doing well, then you can check the status of the dragon and use items and interactions accordingly.");
     }
 
     private void showStatus() {
-        System.out.println("The dragon has multiple different areas of \"help\" that it requires, whether it is a physical, mental, or dietary status. The numbers will range from 0 to 10, 0 being the worst health and 10 being the best health.");
+        console.println("The dragon has multiple different areas of \"help\" that it requires, whether it is a physical, mental, or dietary status. The numbers will range from 0 to 10, 0 being the worst health and 10 being the best health.");
     }
 
     private void showItems() {
-        System.out.println("INSERT LIST OF ITEMS FOR FUTURE USE");
+        console.println("INSERT LIST OF ITEMS FOR FUTURE USE");
     }
 
     private void getLocations() {
-        System.out.println("INSERT LIST OF LOCATIONS FOR FUTURE USE");
+        console.println("INSERT LIST OF LOCATIONS FOR FUTURE USE");
     }
 }
     

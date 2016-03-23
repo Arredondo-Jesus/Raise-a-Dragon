@@ -64,7 +64,7 @@ public class GameMenuView extends View {
         InventoryView inventoryView = new InventoryView();
        inventoryView.viewInventory();
        }catch(InventoryControlException e){
-           System.out.println(e);
+           ErrorView.display(this.getClass().getName(),e.getMessage());
        }
     }
 
@@ -75,7 +75,7 @@ public class GameMenuView extends View {
     }
 
     private void helpMenu() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void viewDragonMenu() {

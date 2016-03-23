@@ -37,7 +37,7 @@ public class FoodView extends View{
                 break;
             case 'E':
                 return true;
-            default: System.out.print("\n*** Invalid selection *** Try again");
+            default: console.print("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
@@ -51,7 +51,7 @@ public class FoodView extends View{
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
                 
                 //prompt for the player's name
-                System.out.println("\n\nHow many items do you want:");
+                console.println("\n\nHow many items do you want:");
                 
                 // get the name from the keyboard and trim off the blanks
                 value = keyboard.nextLine();
@@ -59,7 +59,7 @@ public class FoodView extends View{
                 
                 // if the name is invalid (less than two characters in length)
                 if (value.length() < 1) {
-                    System.out.println("Invalid name - The name cannot be blank");
+                    console.println("Invalid name - The name cannot be blank");
                 }
         
         return value;
@@ -74,7 +74,7 @@ public class FoodView extends View{
             food.setQuantity(quantity);
             ArrayList<Inventory> inventory = ControlInventory.addItem(food);
         }catch(NumberFormatException fe){
-            System.out.println("Enter a number please this is not a valid entry");
+            ErrorView.display(this.getClass().getName(), fe.getMessage());
         }
      }
    

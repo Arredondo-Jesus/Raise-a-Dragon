@@ -38,7 +38,7 @@ public class CreateDragonView extends View{
         String value = null;
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
         
-        System.out.println("\nEnter Dragon's Color: " );
+        console.println("\nEnter Dragon's Color: " );
 
         // get the name from the keyboard and trim off the blanks
         value = keyboard.nextLine().toUpperCase();
@@ -50,7 +50,7 @@ public class CreateDragonView extends View{
         String value = null;
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
         
-        System.out.println("\nEnter Dragon's Name: " );
+        console.println("\nEnter Dragon's Name: " );
 
         // get the name from the keyboard and trim off the blanks
         value = keyboard.nextLine().toUpperCase();

@@ -5,8 +5,12 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.exceptions.ControlGameException;
 import byui.cit260.exceptions.InventoryControlException;
 import byui.cit260.raiseADragon.model.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import raiseadragon.RaiseADragon;
@@ -92,5 +96,13 @@ public class ControlGame {
         locations[2][0].setScene(scenes[SceneType.store.ordinal()]);
         locations[2][1].setScene(scenes[SceneType.house.ordinal()]);
         locations[2][2].setScene(scenes[SceneType.river.ordinal()]);
+    }
+
+    public static void saveGame(Game currentGame, String filePath) throws ControlGameException {
+        try(FileOutputStream fops = new FileOutputStream(filePath)){
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+        }catch(IOException e){
+            throw new ControlGameException(e.getMessage());
+        }
     }
 }

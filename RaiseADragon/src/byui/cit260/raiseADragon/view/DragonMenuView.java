@@ -71,12 +71,12 @@ public class DragonMenuView extends View {
                 case 'E': // Exit the menu
                     return true;
                 default:
-                    System.out.println("\n*** Invalid selection *** Try again");
+                    console.println("\n*** Invalid selection *** Try again");
                     break;
             }
             return false;
         } catch (BodyPartControlException ex) {
-           System.out.println(ex);
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
         }
         return false;
     }
@@ -88,35 +88,35 @@ public class DragonMenuView extends View {
     }
 
     private void playDragon() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void teachDragon() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void healDragon() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void washDragon() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void feedDragon() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void sleepDragon() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void teachToFly() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     }
 
     private void helpMenu() {
-        System.out.println("\n*** View Details did a thing.");
+        console.println("\n*** View Details did a thing.");
     } 
 
     private void createDragon() {

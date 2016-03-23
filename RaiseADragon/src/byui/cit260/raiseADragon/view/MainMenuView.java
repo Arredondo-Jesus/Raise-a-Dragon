@@ -8,6 +8,7 @@ package byui.cit260.raiseADragon.view;
 import byui.cit260.exceptions.PlayerException;
 import byui.cit260.raiseADragon.control.*;
 import byui.cit260.raiseADragon.model.Player;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +38,7 @@ public class MainMenuView extends View {
     
             
     
-    public void startProgram(){
+    public void startProgram() throws IOException{
     
         // Display the banner screen
         this.displayBanner();
@@ -50,7 +51,7 @@ public class MainMenuView extends View {
         try {
             player = ProgramControl.createPlayer(playersName);
         } catch (PlayerException ex) {
-            System.out.println(ex);
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
         }
         
         // Display a personalized welcome message
@@ -63,42 +64,42 @@ public class MainMenuView extends View {
 }
 
     public void displayBanner() {
-        System.out.println("\n\n**************************************************");
+        console.println("\n\n**************************************************");
         
-        System.out.println("*                                                *"
+        console.println("*                                                *"
                     +      "\n* This is the game of Raising a Dragon           *"
                     +      "\n* In this game you will help a poor, baby dragon *"
                     +      "\n* grow by nurturing it into a strong, and brave  *"
                     +      "\n* dragon who can fly on its own and return to    *"
                     +      "\n* its family.                                    *");
         
-        System.out.println("\n* You will be required to take care of a dragon  *"
+        console.println("\n* You will be required to take care of a dragon  *"
                     +      "\n* on a daily basis and make sure he grows to be  *"
                     +      "\n* big and strong.  *");
         
-        System.out.println("\n* Take care of your baby dragon and make sure    *"
+        console.println("\n* Take care of your baby dragon and make sure    *"
                     +      "\n* they are healthy and are well cared for.       *"
                     +      "\n* Good luck! have fun taking care of your dragon!*");
 
     }
 
-    public String getPlayersName() {
+    public String getPlayersName() throws IOException {
         boolean valid = false; // indicates if the name has to be retrieved.
         String playersName = null;
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+        //Scanner keyboard = new Scanner(System.in); // keyboard input stream
         
         while(!valid) { //while a valid name has not been retrieved
                 
                 //prompt for the player's name
-                System.out.println("\n\nEnter the player's name below:");
+                console.println("\n\nEnter the player's name below:");
                 
                 // get the name from the keyboard and trim off the blanks
-                playersName = keyboard.nextLine();
+                playersName = keyboard.readLine();
                 playersName = playersName.trim();
                 
                 // if the name is invalid (less than two characters in length)
                 if (playersName.length() < 2) {
-                    System.out.println("Invalid name - The name cannot be blank");
+                    console.println("Invalid name - The name cannot be blank");
                     continue; // and repeat again
                 }
                 break; //out of the (exit) the repetition
@@ -107,10 +108,10 @@ public class MainMenuView extends View {
     }
 
     private void displayWelcomeMessage(Player player) {
-        System.out.println("\n\n=================================================");
-        System.out.println("\tWelcome to Raise a Dragon, " + player.getName());
-        System.out.println("\tRaise your dragon well!");
-        System.out.println("\n\n=================================================");
+        console.println("\n\n=================================================");
+        console.println("\tWelcome to Raise a Dragon, " + player.getName());
+        console.println("\tRaise your dragon well!");
+        console.println("\n\n=================================================");
     }
 
     @Override
@@ -133,7 +134,7 @@ public class MainMenuView extends View {
             case 'E': // Exit the program
                 return true;
             default:
-                    System.out.println("\n*** Invalid selection *** Try again");
+                    console.println("\n*** Invalid selection *** Try again");
                     break;
         }
         return false;
@@ -147,18 +148,27 @@ public class MainMenuView extends View {
         try{
             gameMenu.display();
         }catch(Throwable te){
-            System.out.println(te);
+            ErrorView.display(this.getClass().getName(),te.getMessage());
             te.printStackTrace();
             gameMenu.display();
         }
     }
 
     private void startExistingGame() {
-        System.out.println("*** startExistingGame was a thing. ***");
+        console.println("*** startExistingGame was a thing. ***");
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame will be a thing. ***");
+        //Prompty for and get the name of the file to save the game in
+        System.out.println("\n\nEnter the file path of the file where the "
+                + "file is going to be saved");
+        String filePath = this.getInput();
+        
+        try{
+            ControlGame.saveGame(RaiseADragon.getCurrentGame(), filePath);
+        }catch(Exception e){
+            ErrorView.display("MainMenuView", e.getMessage());
+        }
     }
 
     private void displayHelpMenu() {

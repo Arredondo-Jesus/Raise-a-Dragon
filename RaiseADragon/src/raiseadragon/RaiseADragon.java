@@ -7,6 +7,12 @@ package raiseadragon;
 
 import byui.cit260.raiseADragon.model.*;
 import byui.cit260.raiseADragon.view.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -21,6 +27,36 @@ public class RaiseADragon {
     
     private static Game currentGame = null;
     private static Player player = null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
+    
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        RaiseADragon.logFile = logFile;
+    }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        RaiseADragon.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        RaiseADragon.inFile = inFile;
+    }
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -44,106 +80,40 @@ public class RaiseADragon {
         MainMenuView mainMenuView = new MainMenuView();
         
         try{
+            
+            RaiseADragon.inFile =
+                    new BufferedReader(new InputStreamReader(System.in));
+            
+            RaiseADragon.outFile = new PrintWriter(System.out, true);
+            
+            String filePath = "log.txt";
+            RaiseADragon.logFile = new PrintWriter(filePath);
+            
             mainMenuView.startProgram();
             mainMenuView.display();
-        }catch(Throwable te){
-            System.out.println(te);
-            te.printStackTrace();
-            mainMenuView.display();
+            
+        }catch(Throwable e){
+            System.out.println("Exception: " + e.toString() +
+                               "\nCause: " + e.getCause() +
+                               "\nMessage: " + e.getMessage());
         }
-        /*Food food = new Food();
-        food.setDescription("Food");
-        food.setName("Candy");
-        System.out.println("Here is an overview of the "+ food.toString());
         
-        Fruit fruit = new Fruit();
-        fruit.setName("Apple");
-        System.out.println("Here is an overview of the "+ fruit.toString());
-        
-        Game game = new Game();
-        game.setAction("Action");
-        game.setName("Dragon");
-        game.setStatistics("56");
-        game.setStatus("In Progress");
-        System.out.println("Here is an overview of the "+ game.toString());
-        
-        Location location = new Location();
-        location.setName("Fantasy Land");
-        location.setPositionInMap("North");
-        System.out.println("Here is an overview of the "+ location.toString());
-        
-        Map map = new Map();
-        map.setName("Fantasy Land Map");
-        map.setSize(13.2);
-        System.out.println("Here is an overview of the "+ map.toString());
-        
-        Meat meat = new Meat();
-        meat.setName("Fish");
-        System.out.println("Here is an overview of the "+ meat.toString());
-        
-        Sweets sweets = new Sweets();
-        sweets.setName("Sugar");
-        System.out.println("Here is an overview of the "+ sweets.toString());
-        
-        Vegetables vegetable = new Vegetables();
-        vegetable.setName("Carrot");
-        System.out.println("Here is an overview of the "+ vegetable.toString());
-        
-        BodyPart bodyPart = new BodyPart();
-        bodyPart.setName("Leg");
-        System.out.println("Here is an overview of the "+ bodyPart.toString());
-        
-        Dragon dragon = new Dragon();
-        dragon.setAge(12);
-        dragon.setColor("Green");
-        dragon.setSize(14);
-        dragon.setName("Dragonzito");
-        System.out.println("Here is an overview of the "+ dragon.toString());
-        
-        Healing healing = new Healing();
-        healing.setName("Heart");
-        healing.setDescription("Healing heart");
-        healing.setStatus("Getting better");
-        System.out.println("Here is an overview of the "+ healing.toString());
-        
-        Hygiene hygiene = new Hygiene();
-        hygiene.setDescription("Washing teeth");
-        hygiene.setName("Teeth");
-        hygiene.setStatus("Good");
-        System.out.println("Here is an overview of the "+ hygiene.toString());
-        
-        Interaction interaction = new Interaction();
-        interaction.setName("Playing");
-        interaction.setDescription("Playing with dragon");
-        System.out.println("Here is an overview of the "+ interaction.toString());
-        
-        Item item = new Item();
-        item.setName("Ball");
-        item.setPrice(12);
-        item.setDescription("Dragon Ball");
-        System.out.println("Here is an overview of the "+ item.toString());
-        
-        Inventory inventory = new Inventory();
-        inventory.setAmountOfMoney(35.5);
-        System.out.println("Here is an overview of the "+ inventory.toString());
-        
-        Player player = new Player();
-        System.out.println("Here is an overview of the "+ player.toString());
-        
-        Status status = new Status();
-        status.setPoints(33);
-        status.setStatus("Winning");
-        System.out.println("Here is an overview of the "+ status.toString());
-       
-        Training training = new Training();
-        training.setName("How to fly");
-        System.out.println("Here is an overview of the "+ training.toString());
-        
-        Wellness wellness = new Wellness();
-        wellness.setName("Ill");
-        wellness.setDescription("Stomach problems");
-        System.out.println("Here is an overview of the "+ wellness.toString());
-        */
+        finally {
+            try {
+                if (RaiseADragon.inFile !=null)
+                    RaiseADragon.inFile.close();
+                
+                if (RaiseADragon.outFile !=null)
+                    RaiseADragon.outFile.close();
+                
+                if (RaiseADragon.logFile !=null)
+                    RaiseADragon.logFile.close(); 
+            } catch (IOException ex) {
+                System.out.println("error closing files");
+                return;
+            }
+            
+        }
     }
     
 }

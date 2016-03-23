@@ -54,7 +54,7 @@ public class NewLocationView extends View {
             case 'E':
                 return true;
             default:
-                    System.out.println("\n*** Invalid selection *** Try again");
+                    console.println("\n*** Invalid selection *** Try again");
                     break;
         }
         return false;

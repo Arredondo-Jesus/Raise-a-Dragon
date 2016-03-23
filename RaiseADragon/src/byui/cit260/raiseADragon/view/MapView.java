@@ -39,7 +39,7 @@ public class MapView extends View {
                     case 'E': //Exit the menu
                             return true;
                     default:
-                            System.out.println("\n*** Invalid Selection *** Try again");
+                            console.println("\n*** Invalid Selection *** Try again");
                             break;
                 }
                 return false;
@@ -59,5 +59,4 @@ public class MapView extends View {
         NewLocationView move = new NewLocationView();
         move.display();
     }
-    
 }
