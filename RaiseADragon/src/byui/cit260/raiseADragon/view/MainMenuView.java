@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.ControlGameException;
 import byui.cit260.exceptions.PlayerException;
 import byui.cit260.raiseADragon.control.*;
 import byui.cit260.raiseADragon.model.Player;
@@ -141,10 +142,20 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        ControlGame.createNewGame(RaiseADragon.getPlayer());
+        System.out.println("\n\nEnter the file path for file where the game"
+                            + "is to be saved.");
         
-        // display the game menu
+        String filePath = this.getInput();
+        
+        try {
+            ControlGame.getSavedGame(filePath);
+        } catch (Exception e) {
+            ErrorView.display("MainMenuView", e.getMessage());
+        }
+        
         GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+        
         try{
             gameMenu.display();
         }catch(Throwable te){
@@ -154,8 +165,19 @@ public class MainMenuView extends View {
         }
     }
 
-    private void startExistingGame() {
-        console.println("*** startExistingGame was a thing. ***");
+    private void startExistingGame(){
+        System.out.println("\n\nSTART A SAVED GAME I THINK LET US HOPE IT IS TRUE");
+        
+        String filePath = this.getInput();
+        
+        try {
+            ControlGame.getSavedGame(filePath);
+        } catch (Exception e) {
+            ErrorView.display("MainMenuView", e.getMessage());
+            
+            GameMenuView gameMenu = new GameMenuView();
+            gameMenu.display();
+        }
     }
 
     private void saveGame() {

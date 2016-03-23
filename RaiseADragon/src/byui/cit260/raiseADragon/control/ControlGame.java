@@ -8,8 +8,11 @@ package byui.cit260.raiseADragon.control;
 import byui.cit260.exceptions.ControlGameException;
 import byui.cit260.exceptions.InventoryControlException;
 import byui.cit260.raiseADragon.model.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +24,25 @@ import raiseadragon.RaiseADragon;
  */
 public class ControlGame {
 
-    public static void createNewGame(Player player) {
+    public static void getSavedGame(String filePath) throws ControlGameException {
+        Game game = null;
+        
+        try( FileInputStream fips = new FileInputStream (filePath)) {
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            game = (Game) output.readObject();
+        }
+        catch(FileNotFoundException fnfe) {
+            throw new ControlGameException(fnfe.getMessage());
+        }
+        catch(Exception e) {
+            throw new ControlGameException(e.getMessage());
+        }
+        
+        RaiseADragon.setCurrentGame(game);
+    }
+
+    public void createNewGame(Player player) {
             
         Game game = new Game(); // create new game
         RaiseADragon.setCurrentGame(game); // save in Raise a Dragon
@@ -101,6 +122,12 @@ public class ControlGame {
     public static void saveGame(Game currentGame, String filePath) throws ControlGameException {
         try(FileOutputStream fops = new FileOutputStream(filePath)){
             ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            Game game = new Game(); // create new game
+        RaiseADragon.setCurrentGame(game); // save in Raise a Dragon
+            
+            output.writeObject(game);
+            
         }catch(IOException e){
             throw new ControlGameException(e.getMessage());
         }
