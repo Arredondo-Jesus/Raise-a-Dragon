@@ -5,9 +5,11 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.exceptions.ControlGameException;
 import byui.cit260.exceptions.PlayerException;
 import byui.cit260.raiseADragon.control.*;
+import byui.cit260.raiseADragon.model.Dragon;
 import byui.cit260.raiseADragon.model.Player;
 import java.io.IOException;
 import java.util.Scanner;
@@ -121,7 +123,11 @@ public class MainMenuView extends View {
         
         switch (value.charAt(0)) {
             case 'N': // create and start a new game
-                this.startNewGame();
+                try{
+                    this.startNewGame();
+                }catch(Exception e){
+                    System.out.println("There was an error"+e.getMessage());
+                }
                 break;
             case 'G': // get and start an existing game
                 this.startExistingGame();
@@ -141,7 +147,7 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame() {
+    private void startNewGame() throws BodyPartControlException {
         System.out.println("\n\nEnter the file path for file where the game"
                             + "is to be saved.");
         
@@ -154,7 +160,7 @@ public class MainMenuView extends View {
         }
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        Dragon dragon = ControlDragon.initializeDragon();
         
         try{
             gameMenu.display();

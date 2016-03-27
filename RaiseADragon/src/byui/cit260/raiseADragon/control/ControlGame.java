@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.control;
 
+import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.exceptions.ControlGameException;
 import byui.cit260.exceptions.InventoryControlException;
 import byui.cit260.raiseADragon.model.*;
@@ -42,7 +43,7 @@ public class ControlGame {
         RaiseADragon.setCurrentGame(game);
     }
 
-    public void createNewGame(Player player) {
+    public void createNewGame(Player player) throws BodyPartControlException {
             
         Game game = new Game(); // create new game
         RaiseADragon.setCurrentGame(game); // save in Raise a Dragon
@@ -55,13 +56,15 @@ public class ControlGame {
         game.setInventory(inventoryList);
         
         Dragon dragon = new Dragon(); // create new dragon
+        dragon=ControlDragon.initializeDragon();
         game.setDragon(dragon);
+        
         
         Map map = ControlMap.createMap(); // create and initialize new map
         game.setMap(map);
         
         
-        
+        RaiseADragon.setCurrentGame(game);
         //Move actors to starting point in the map
         //ControlMap.moveActorsToLocaiton();
         

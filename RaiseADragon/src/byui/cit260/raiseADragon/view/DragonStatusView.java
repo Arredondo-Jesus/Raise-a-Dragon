@@ -9,6 +9,10 @@ import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.raiseADragon.control.ControlDragon;
 import byui.cit260.raiseADragon.model.BodyPart;
 import byui.cit260.raiseADragon.model.Dragon;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -16,6 +20,8 @@ import byui.cit260.raiseADragon.model.Dragon;
  */
 public class DragonStatusView{
     //ControlDragon myDragon = new ControlDragon();
+    
+    protected final PrintWriter console = new PrintWriter(System.out,true);
     
     public void displayStatistics () throws BodyPartControlException{
         ControlDragon controlDragon = new ControlDragon();
@@ -25,13 +31,14 @@ public class DragonStatusView{
         String partDescription=null;
         String partStatus=null;
         int partPoints=0;
-        BodyPart [] bodyParts = new BodyPart[10];
         
         int i;
         
-        bodyParts=controlDragon.initializeDragon();
+        dragon=ControlDragon.initializeDragon();
+        BodyPart [] bodyParts=dragon.getBodyParts();
         
-        System.out.print("\n\t----------------------------------------------------"
+        
+        console.print("\n\t----------------------------------------------------"
                        +"\n\t! Dragon Statisticst"
                        +"\n\t-----------------------------------------------------");
         
@@ -52,20 +59,59 @@ public class DragonStatusView{
                            
                             }catch(ArrayIndexOutOfBoundsException e){
                                
-                                System.out.println("The number of body Parts has exceeded "
+                                console.println("The number of body Parts has exceeded "
                                        + "the size of the array" + e);
                            }
                            
-                           System.out.println("\n\t"+partName+
+                           console.println("\n\t"+partName+
                                    "\t\t"+partDescription+
                                    "\t\t"+partStatus+
                                    "\t\t"+partPoints);
                        }
         
         
-        System.out.print("\n\t----------------------------------------------------"
+           console.print("\n\t----------------------------------------------------"
                         +"\n\t"
                         +"\n\t----------------------------------------------------");
     }
     
+     public static void printToFile(String filePath){
+        
+        String name =null;
+        String description=null;
+        String status=null;
+        String points=null;
+        
+        int i=0;
+        
+        Dragon dragon = new Dragon();
+        BodyPart[] bodyParts = dragon.getBodyParts();
+        
+        //String outputFileName="Dragon-Body-Parts-Satus.txt";
+        
+        try{
+            FileWriter fw = new FileWriter(filePath);
+            fw.write("\nName"+"\tDescriptions"+"\tPoints"+"\tStatus");
+            
+            for (BodyPart bodyPart : bodyParts) {
+                i=i++;
+                name=bodyParts[i].getName();
+                description=bodyParts[i].getDescription();
+                status=bodyParts[i].getStatus();
+                points=Integer.toString(bodyParts[i].getPoints());
+                
+                fw.write("\n"+name+""
+                        + "\tDescriptions"+description+""
+                        + "\tPoints"+points+""
+                        + "\tStatus"+status);
+                
+            }
+            
+            fw.close();
+        }catch(IOException e){
+            ErrorView.display("DragonStatusView",e.getMessage());
+        }
+    }
+     
+     
 }

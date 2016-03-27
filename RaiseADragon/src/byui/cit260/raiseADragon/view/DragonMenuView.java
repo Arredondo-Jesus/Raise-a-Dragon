@@ -6,6 +6,7 @@
 package byui.cit260.raiseADragon.view;
 
 import byui.cit260.exceptions.BodyPartControlException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +32,7 @@ public class DragonMenuView extends View {
                 + "\nL - Sleep"
                 + "\nJ - Teach Dragon to Fly"
                 + "\nH - Help Menu"
+                + "\nR - Print Report"
                 + "\nE - Exit"
                 + "\n-------------------------------------------------------------");
     }
@@ -67,6 +69,15 @@ public class DragonMenuView extends View {
                     break;
                 case 'H': // Show help menu
                     this.helpMenu();
+                    break;
+                case 'R':
+            {
+                try {
+                    this.bodyPartReport();
+                } catch (IOException ex) {
+                    Logger.getLogger(DragonMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                     break;
                 case 'E': // Exit the menu
                     return true;
@@ -126,4 +137,11 @@ public class DragonMenuView extends View {
         createDragonView.doAction("Color");
         
     } 
+
+    private void bodyPartReport() throws IOException, BodyPartControlException {
+        PrintBodyPartReport print = new PrintBodyPartReport();
+        print.printReport();
+        DragonStatusView dragonStatsView = new DragonStatusView();
+        dragonStatsView.displayStatistics();
+    }
 }
