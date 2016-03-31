@@ -10,12 +10,14 @@ import byui.cit260.exceptions.ControlGameException;
 import byui.cit260.exceptions.PlayerException;
 import byui.cit260.raiseADragon.control.*;
 import byui.cit260.raiseADragon.model.Dragon;
+import byui.cit260.raiseADragon.model.Game;
 import byui.cit260.raiseADragon.model.Player;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import raiseadragon.RaiseADragon;
+import static sun.audio.AudioPlayer.player;
 
 /**
  *
@@ -99,6 +101,7 @@ public class MainMenuView extends View {
                 // get the name from the keyboard and trim off the blanks
                 playersName = keyboard.readLine();
                 playersName = playersName.trim();
+                Player player = RaiseADragon.getPlayer();
                 
                 // if the name is invalid (less than two characters in length)
                 if (playersName.length() < 2) {
@@ -148,7 +151,7 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() throws BodyPartControlException {
-        System.out.println("\n\nEnter the file path for file where the game"
+       /*System.out.println("\n\nEnter the file path for file where the game"
                             + "is to be saved.");
         
         String filePath = this.getInput();
@@ -160,7 +163,8 @@ public class MainMenuView extends View {
         }
         
         GameMenuView gameMenu = new GameMenuView();
-        Dragon dragon = ControlDragon.initializeDragon();
+        Game game =RaiseADragon.getCurrentGame();
+        Dragon dragon = game.getDragon();
         
         try{
             gameMenu.display();
@@ -168,9 +172,13 @@ public class MainMenuView extends View {
             ErrorView.display(this.getClass().getName(),te.getMessage());
             te.printStackTrace();
             gameMenu.display();
-        }
+        }*/
+       Player player = RaiseADragon.getPlayer();
+       ControlGame controlGame = new ControlGame();
+       controlGame.createNewGame(player);
+       GameMenuView gameView = new GameMenuView();
+       gameView.display();
     }
-
     private void startExistingGame(){
         System.out.println("\n\nSTART A SAVED GAME I THINK LET US HOPE IT IS TRUE");
         

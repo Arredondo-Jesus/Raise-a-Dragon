@@ -25,8 +25,8 @@ public class ControlDragon {
         return error;
     }
 
-    public static Dragon initializeDragon() throws BodyPartControlException{
-        Dragon dragon = new Dragon();
+    public static Dragon initializeDragon(Dragon dragon) throws BodyPartControlException{
+        //Dragon dragon = new Dragon();
         
         String name = null;
         String color =null;

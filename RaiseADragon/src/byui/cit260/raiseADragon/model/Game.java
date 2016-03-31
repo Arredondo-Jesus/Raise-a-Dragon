@@ -25,7 +25,8 @@ public class Game implements Serializable{
     private Map map;
     private ArrayList<Inventory> inventory;
     private Dragon dragon;
-
+    private Situation [] situations;
+    
     public Game() {
     }
 
@@ -94,6 +95,15 @@ public class Game implements Serializable{
     public void setDragon(Dragon dragon) {
         this.dragon = dragon;
     }
+
+    public Situation[] getSituations() {
+        return situations;
+    }
+
+    public void setSituations(Situation[] situations) {
+        this.situations = situations;
+    }
+    
 
     @Override
     public int hashCode() {

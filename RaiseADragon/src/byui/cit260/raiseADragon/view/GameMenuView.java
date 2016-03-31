@@ -32,7 +32,8 @@ public class GameMenuView extends View {
                 + "\n-------------------------------------------------------------");
 
     }
-            public boolean doAction(String value) {
+    @Override
+    public boolean doAction(String value) {
         switch (value.charAt(0)) {
             case 'I': // View current status of inventorty
                 this.viewInventory();

@@ -63,16 +63,13 @@ public void printBodyPartsStatus(String filePath, BodyPart [] bodyParts) {
         }
     }
 
+    @Override
     public boolean doAction(String filePath) {
         if (filePath!=null){
-            try {
-                Dragon dragon = ControlDragon.initializeDragon();
-                BodyPart [] bodyParts = dragon.getBodyParts();
-                this.printBodyPartsStatus(filePath, bodyParts);
-                
-            } catch (BodyPartControlException ex) {
-                ErrorView.display(this.getClass().getName(), ex.getMessage());
-            }
+            Game game =RaiseADragon.getCurrentGame();
+            Dragon dragon = game.getDragon();
+            BodyPart [] bodyParts = dragon.getBodyParts();
+            this.printBodyPartsStatus(filePath, bodyParts);
         
         }else{
             return false;

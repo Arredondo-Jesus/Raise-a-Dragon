@@ -22,7 +22,7 @@ public class DragonMenuView extends View {
                 + "\n-------------------------------------------------------------"
                 + "\n| Dragon Menu                                               |"
                 + "\n-------------------------------------------------------------"
-                + "\nC - Create Dragon"
+                + "\nC - Change Dragon's Name and Color"
                 + "\nS - View Detaild Statistics"
                 + "\nP - Play"
                 + "\nT - Teach"
@@ -41,7 +41,7 @@ public class DragonMenuView extends View {
         try {
             switch (value.charAt(0)) {
                 case 'C': // view the details and statistics of game
-                    this.createDragon();
+                    this.changeDragonName();
                     break;
                 case 'S': // view the details and statistics of game
                     this.viewDragonDetails();
@@ -130,7 +130,7 @@ public class DragonMenuView extends View {
         console.println("\n*** View Details did a thing.");
     } 
 
-    private void createDragon() {
+    public void changeDragonName() {
         
         CreateDragonView createDragonView = new CreateDragonView();
         createDragonView.doAction("Name");

@@ -7,7 +7,9 @@ package byui.cit260.raiseADragon.view;
 
 import byui.cit260.raiseADragon.control.ControlDragon;
 import byui.cit260.raiseADragon.model.Dragon;
+import byui.cit260.raiseADragon.model.Game;
 import java.util.Scanner;
+import raiseadragon.RaiseADragon;
 
 /**
  *
@@ -25,10 +27,16 @@ public class CreateDragonView extends View{
         
         if (inputType.equals("Name")){
             value = this.getInputName();
+            Game game = RaiseADragon.getCurrentGame();
+            Dragon dragon = game.getDragon();
+            dragon.setName(value);
         }
         
         if (inputType.equals("Color")){
             value = this.getInputColor();
+             Game game = RaiseADragon.getCurrentGame();
+            Dragon dragon = game.getDragon();
+            dragon.setColor(value);
             
         }
         return true;

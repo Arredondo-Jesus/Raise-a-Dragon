@@ -9,10 +9,12 @@ import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.raiseADragon.control.ControlDragon;
 import byui.cit260.raiseADragon.model.BodyPart;
 import byui.cit260.raiseADragon.model.Dragon;
+import byui.cit260.raiseADragon.model.Game;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import raiseadragon.RaiseADragon;
 
 /**
  *
@@ -25,8 +27,7 @@ public class DragonStatusView{
     
     public void displayStatistics () throws BodyPartControlException{
         ControlDragon controlDragon = new ControlDragon();
-        Dragon dragon = null;
-        
+      
         String partName=null;
         String partDescription=null;
         String partStatus=null;
@@ -34,7 +35,9 @@ public class DragonStatusView{
         
         int i;
         
-        dragon=ControlDragon.initializeDragon();
+        Game game =RaiseADragon.getCurrentGame();
+        Dragon dragon = game.getDragon();
+        
         BodyPart [] bodyParts=dragon.getBodyParts();
         
         
@@ -43,7 +46,8 @@ public class DragonStatusView{
                        +"\n\t-----------------------------------------------------");
         
         
-        
+        console.println("\nDragon's Name: "+ RaiseADragon.getCurrentGame().getDragon().getName());
+        console.println("Dragon's Color: "+ RaiseADragon.getCurrentGame().getDragon().getColor());
         
         System.out.println("\n\tPart Name" + "\tPart Description" + "\tPart Status"+"\tPart Points");
                        
