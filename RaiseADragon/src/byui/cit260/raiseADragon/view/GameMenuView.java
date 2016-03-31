@@ -7,7 +7,9 @@ package byui.cit260.raiseADragon.view;
 
 import byui.cit260.exceptions.InventoryControlException;
 import byui.cit260.raiseADragon.control.ControlGame;
+import byui.cit260.raiseADragon.control.ControlSituation;
 import byui.cit260.raiseADragon.model.Inventory;
+import byui.cit260.raiseADragon.model.Situation;
 import java.util.Scanner;
 
 /**
@@ -23,6 +25,7 @@ public class GameMenuView extends View {
                 + "\n| Game Menu                                               |"
                 + "\n-------------------------------------------------------------"
                 + "\nS - View Detaild Statistics"
+                + "\nC - Continue......."
                 + "\nI - View List of Items in Inventory"
                 + "\nD - Dragon Menu"
                 + "\nB - Go Shopping"
@@ -37,6 +40,9 @@ public class GameMenuView extends View {
         switch (value.charAt(0)) {
             case 'I': // View current status of inventorty
                 this.viewInventory();
+                break;
+            case 'C': // View current status of inventorty
+                this.continueGame();
                 break;
             case 'D': // View Dragon Menu
                 this.viewDragonMenu();
@@ -87,6 +93,16 @@ public class GameMenuView extends View {
     private void mapMenu() {
         MapView mapView =new MapView();
         mapView.display();
+    }
+
+    private void continueGame() {
+        ControlSituation controlSituation = new ControlSituation();
+        Situation situation =controlSituation.getRandomSitution();
+        console.println("\n"+situation.getDescription());
+        console.print("\nWhat do you want to do?");
+        
+        //DragonMenuView dragonMenu = new DragonMenuView();
+        //dragonMenu.display();
     }
     
 }

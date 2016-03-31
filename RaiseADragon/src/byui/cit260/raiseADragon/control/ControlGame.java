@@ -55,6 +55,8 @@ public class ControlGame {
         ArrayList<Inventory> inventoryList = ControlGame.createInventoryList();
         game.setInventory(inventoryList);
         
+        this.initilizeSituations();
+        
         Dragon dragon = new Dragon(); // create new dragon
         dragon=ControlDragon.initializeDragon(dragon);
         game.setDragon(dragon);
@@ -123,24 +125,23 @@ public class ControlGame {
         locations[2][2].setScene(scenes[SceneType.river.ordinal()]);
     }
     
-    public Situation [] initilizeSituations(){
+    public void initilizeSituations(){
         Situation[] situations = new Situation[10];
         
         situations[0]= this.setSituation("Fall", "Your Dragon has follen into a deep whole and "
                 + "is now injured", 2, "negative");
-        situations[1]= this.setSituation("", "", 0, "");
-        situations[2]= this.setSituation("", "", 0, "");
-        situations[3]= this.setSituation("", "", 0, "");
-        situations[4]= this.setSituation("", "", 0, "");
-        situations[5]= this.setSituation("", "", 0, "");
-        situations[6]= this.setSituation("", "", 0, "");
-        situations[7]= this.setSituation("", "", 0, "");
-        situations[8]= this.setSituation("", "", 0, "");
-        situations[9]= this.setSituation("", "", 0, "");
+        situations[1]= this.setSituation("", "Description 2", 0, "");
+        situations[2]= this.setSituation("", "Description 3", 0, "");
+        situations[3]= this.setSituation("", "Description 4", 0, "");
+        situations[4]= this.setSituation("", "Description 5", 0, "");
+        situations[5]= this.setSituation("", "Description 6", 0, "");
+        situations[6]= this.setSituation("", "Description 7", 0, "");
+        situations[7]= this.setSituation("", "Description 8", 0, "");
+        situations[8]= this.setSituation("", "Description 9", 0, "");
+        situations[9]= this.setSituation("", "Description 10", 0, "");
         
         RaiseADragon.getCurrentGame().setSituations(situations);
         
-        return situations;
     }
     
     public Situation setSituation(String name, String description,
