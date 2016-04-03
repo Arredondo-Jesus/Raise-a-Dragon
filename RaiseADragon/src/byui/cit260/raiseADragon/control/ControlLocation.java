@@ -8,6 +8,7 @@ package byui.cit260.raiseADragon.control;
 import byui.cit260.exceptions.ControlLocationException;
 import byui.cit260.raiseADragon.model.Location;
 import byui.cit260.raiseADragon.view.View;
+import raiseadragon.RaiseADragon;
 
 
 /**
@@ -28,6 +29,8 @@ public class ControlLocation extends View{
 
     
     public double moveToLocation(int locationNumber, int positionInMap, String newLocation) throws ControlLocationException {
+        
+        
         try{
         //Find out if the selected location is null
         if(newLocation==null){
@@ -40,7 +43,7 @@ public class ControlLocation extends View{
         }
         
         //Find out if the location is within the parameters of places to go
-        if(locationNumber < 0 || locationNumber > 25){
+        if(locationNumber < 0 || locationNumber > 6){
             throw new ControlLocationException("Please pick a different option. The option you selected is not a destination possibility.");
             
         }
@@ -63,28 +66,41 @@ public class ControlLocation extends View{
         
         return location;
     }
+    
+    public void getLocation(){
+        Location[][] gameLocations = RaiseADragon.getCurrentGame().getMap().getLocations();
+    }
 
+    public int[] controlCurrentLocation = new int[1];
+    
+    
     public void movetoHouse() {
-        console.println("\nYou have been moved to Your House");
+        controlCurrentLocation[0]=0;
+        System.out.println("\nYou have been moved to Your House");
     }
 
     public void movetoStore() {
+        controlCurrentLocation[0]=1;
         console.println("\nYou have been moved to the Store");
     }
 
     public void movetoForest() {
+        controlCurrentLocation[0]=2;
         console.println("\nYou have been moved to the Forest");
     }
 
     public void movetoMountain() {
+        controlCurrentLocation[0]=3;
         console.println("\nYou have been moved to the Mountain");
     }
 
     public void movetoDesert() {
+        controlCurrentLocation[0]=4;
         console.println("\nYou have been moved to the Desert");
     }
 
     public void movetoCave() {
+        controlCurrentLocation[0]=5;
         console.println("\nYou have been moved to the Cave");
     }
 

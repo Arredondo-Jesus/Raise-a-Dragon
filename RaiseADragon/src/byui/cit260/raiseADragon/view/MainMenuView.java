@@ -129,7 +129,7 @@ public class MainMenuView extends View {
                 try{
                     this.startNewGame();
                 }catch(Exception e){
-                    System.out.println("There was an error"+e.getMessage());
+                    System.out.println("There was an error "+e.getMessage());
                 }
                 break;
             case 'G': // get and start an existing game

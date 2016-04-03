@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.raiseADragon.control.ControlLocation;
 import byui.cit260.raiseADragon.model.Location;
 import java.util.Scanner;
 /**
@@ -25,13 +26,13 @@ public class MapView extends View {
                     + "\n-------------------------------------------------------------");
     }
             
-            public boolean doAction(String value) {
+            public boolean doAction(String value, int[] controlCurrentLocation) {
                 switch (value.charAt(0)) {
                     case 'V': // View the world map
                             this.displayMap();
                             break;
                     case 'G': // View information on current location
-                            this.getLocationInfo();
+                            this.getLocationInfo(controlCurrentLocation);
                             break;
                     case 'M': // Move to New Location
                             this.getMove();
@@ -50,13 +51,18 @@ public class MapView extends View {
         map.viewFullMap();
     }
 
-    private void getLocationInfo() {
+    private void getLocationInfo(int[] controlCurrentLocation) {
         LocationDetailView locationInfo = new LocationDetailView();
-        locationInfo.locationDetails();
+        locationInfo.locationDetails(controlCurrentLocation);
     }
 
     private void getMove() {
         NewLocationView move = new NewLocationView();
         move.display();
+    }
+
+    @Override
+    public boolean doAction(String Value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

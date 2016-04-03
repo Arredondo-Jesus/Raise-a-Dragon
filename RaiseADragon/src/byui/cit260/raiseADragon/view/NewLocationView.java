@@ -34,7 +34,6 @@ public class NewLocationView extends View {
     
     @Override
     public boolean doAction(String value){
-        try{
         switch (value.charAt(0)) {
             case 'H':
                 this.getHouse();
@@ -54,20 +53,12 @@ public class NewLocationView extends View {
             case 'C':
                 this.getCave();
                 break;
-            case 'P':
-                this.getError();
-                break;
             case 'E':
                 return true;
 
             default:
                     console.println("\n*** Invalid selection *** Try again");
                     break;
-        }
-        return false;
-        
-        } catch (ControlLocationException ex) {
-                    System.out.println("");
         }
         return false;
     }
@@ -78,32 +69,27 @@ public class NewLocationView extends View {
     }
 
     private void getStore() {
-        ControlLocation house = new ControlLocation();
-        house.movetoStore();
+        ControlLocation store = new ControlLocation();
+        store.movetoStore();
     }
 
     private void getForest() {
-        ControlLocation house = new ControlLocation();
-        house.movetoForest();
+        ControlLocation forest = new ControlLocation();
+        forest.movetoForest();
     }
 
     private void getMountain() {
-        ControlLocation house = new ControlLocation();
-        house.movetoMountain();
+        ControlLocation mountain = new ControlLocation();
+        mountain.movetoMountain();
     }
 
     private void getDesert() {
-        ControlLocation house = new ControlLocation();
-        house.movetoDesert();
+        ControlLocation desert = new ControlLocation();
+        desert.movetoDesert();
     }
 
     private void getCave() {
-        ControlLocation house = new ControlLocation();
-        house.movetoCave();
-    }
-
-    private void getError() throws ControlLocationException {
-        ControlLocation error = new ControlLocation();
-        error.moveToLocation(1,1, "stuff");
+        ControlLocation cave = new ControlLocation();
+        cave.movetoCave();
     }
 }
