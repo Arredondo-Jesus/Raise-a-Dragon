@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author JESUS
  */
-public enum Item{
+public enum Item implements Serializable{
     food,
     ball,
     medicine;

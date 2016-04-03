@@ -16,6 +16,7 @@ public class Interaction implements Serializable{
  
     private String name;
     private String description;
+    private int points;
 
     public Interaction() {
     }
@@ -65,6 +66,14 @@ public class Interaction implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
     
     

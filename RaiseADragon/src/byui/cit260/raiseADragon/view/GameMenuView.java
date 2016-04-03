@@ -5,12 +5,22 @@
  */
 package byui.cit260.raiseADragon.view;
 
+import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.exceptions.InventoryControlException;
+import byui.cit260.raiseADragon.control.ControlBodyPartStatus;
+import byui.cit260.raiseADragon.control.ControlDragon;
 import byui.cit260.raiseADragon.control.ControlGame;
+import byui.cit260.raiseADragon.control.ControlInteraction;
+import byui.cit260.raiseADragon.control.ControlInventory;
 import byui.cit260.raiseADragon.control.ControlSituation;
+import byui.cit260.raiseADragon.model.Interaction;
 import byui.cit260.raiseADragon.model.Inventory;
 import byui.cit260.raiseADragon.model.Situation;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import raiseadragon.RaiseADragon;
 
 /**
  *
@@ -41,8 +51,13 @@ public class GameMenuView extends View {
             case 'I': // View current status of inventorty
                 this.viewInventory();
                 break;
-            case 'C': // View current status of inventorty
+            case 'C': {
+            try {
                 this.continueGame();
+            } catch (BodyPartControlException | IOException ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'D': // View Dragon Menu
                 this.viewDragonMenu();
@@ -69,7 +84,7 @@ public class GameMenuView extends View {
         //System.out.println("****This is calling the viewInventory function");
        try{
         InventoryView inventoryView = new InventoryView();
-       inventoryView.viewInventory();
+        inventoryView.viewInventory();
        }catch(InventoryControlException e){
            ErrorView.display(this.getClass().getName(),e.getMessage());
        }
@@ -95,12 +110,16 @@ public class GameMenuView extends View {
         mapView.display();
     }
 
-    private void continueGame() {
+    private void continueGame() throws BodyPartControlException, IOException {
+        
         ControlSituation controlSituation = new ControlSituation();
         Situation situation =controlSituation.getRandomSitution();
+        int time = RaiseADragon.getTime()+1;
+        RaiseADragon.setTime(time);
         console.println("\n"+situation.getDescription());
+        ControlBodyPartStatus.addPoints(situation);
+        ControlInventory.addToInventory(situation);
         console.print("\nWhat do you want to do?");
-        
         //DragonMenuView dragonMenu = new DragonMenuView();
         //dragonMenu.display();
     }

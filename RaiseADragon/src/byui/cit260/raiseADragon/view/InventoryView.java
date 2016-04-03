@@ -10,6 +10,7 @@ import byui.cit260.raiseADragon.control.ControlGame;
 import byui.cit260.raiseADragon.control.ControlInventory;
 import byui.cit260.raiseADragon.model.Inventory;
 import java.util.ArrayList;
+import raiseadragon.RaiseADragon;
 
 /**
  *
@@ -22,7 +23,7 @@ public class InventoryView {
         int i=0;
         double totalCost = 0;
         
-        ArrayList<Inventory> inventory = ControlGame.getSortedInventoryList();
+        ArrayList<Inventory> inventory = RaiseADragon.getCurrentGame().getInventory();
            
         System.out.println("\nList of invetory items");
         System.out.println("Name"+"\t"

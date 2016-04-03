@@ -5,17 +5,20 @@
  */
 package byui.cit260.raiseADragon.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Chuy
  */
-public class Situation {
+public class Situation implements Serializable {
     private String name;
     private String description;
     private int point;
     private String type;
+    private String partAfected;
+    private int numberClicks;
 
     public Situation() {
     }
@@ -85,6 +88,14 @@ public class Situation {
         this.type = type;
     }
 
+    public String getPartAfected() {
+        return partAfected;
+    }
+
+    public void setPartAfected(String partAfected) {
+        this.partAfected = partAfected;
+    }
+    
     @Override
     public String toString() {
         return "Situation{" + "name=" + name + ", description=" + description + ", point=" + point + '}';

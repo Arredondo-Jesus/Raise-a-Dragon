@@ -1,0 +1,17 @@
+
+
+   Body Parts Status Report    
+
+Name      Description    Points    Status
+----      -----------    ------    ------
+Leg       Right front leg     6         Lost 
+Leg       Left front leg      6         Lost 
+Leg       Right back leg      5         Lost 
+Leg       Left back Leg       5         Lost 
+Brain     The Brain           8         Good 
+Heart     The Heart           10        Excellent
+Wing      Right wing          10        Excellent
+Wing      Left wing           10        Excellent
+Tail      The Tail            10        Excellent
+Body      The Body            10        Excellent
+Stomache  The Stomache        10        Excellent

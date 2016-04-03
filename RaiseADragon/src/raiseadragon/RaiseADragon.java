@@ -32,7 +32,7 @@ public class RaiseADragon {
     private static BufferedReader inFile = null;
     
     private static PrintWriter logFile = null;
-    
+    private static int time;
 
     public static PrintWriter getLogFile() {
         return logFile;
@@ -73,6 +73,16 @@ public class RaiseADragon {
     public static void setPlayer(Player player) {
         RaiseADragon.player = player;
     }
+
+    public static int getTime() {
+        return time;
+    }
+
+    public static void setTime(int time) {
+        RaiseADragon.time = time;
+    }
+    
+    
     
     public static void main(String[] args) {
         

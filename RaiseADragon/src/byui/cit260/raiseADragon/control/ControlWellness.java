@@ -9,6 +9,7 @@ package byui.cit260.raiseADragon.control;
  *
  * @author Chuy
  */
-public class ControlWellness {
+public class ControlWellness extends ControlInteraction {
+    String name = null;
     
 }

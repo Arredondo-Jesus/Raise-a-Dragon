@@ -99,6 +99,13 @@ public class ControlGame {
         medicine.setQuantity(1);
         medicine.setName("Medicine");
         inventory.add(medicine);
+        
+        Inventory money = new Inventory();
+        money.setDescription("Money to buy stuff");
+        money.setAmountOfMoney(1.0);
+        money.setQuantity(130);
+        money.setName("Money");
+        inventory.add(money);
 
         return inventory;
     }
@@ -129,29 +136,38 @@ public class ControlGame {
         Situation[] situations = new Situation[10];
         
         situations[0]= this.setSituation("Fall", "Your Dragon has follen into a deep whole and "
-                + "is now injured", 2, "negative");
-        situations[1]= this.setSituation("", "Description 2", 0, "");
-        situations[2]= this.setSituation("", "Description 3", 0, "");
-        situations[3]= this.setSituation("", "Description 4", 0, "");
-        situations[4]= this.setSituation("", "Description 5", 0, "");
-        situations[5]= this.setSituation("", "Description 6", 0, "");
-        situations[6]= this.setSituation("", "Description 7", 0, "");
-        situations[7]= this.setSituation("", "Description 8", 0, "");
-        situations[8]= this.setSituation("", "Description 9", 0, "");
-        situations[9]= this.setSituation("", "Description 10", 0, "");
+                + "is now injured", 2, "negative","Head");
+        situations[1]= this.setSituation("Trapped", "Your dragon has fallen into a "
+                + "trap a has injured one of his legs", 2, "negative","Leg");
+        situations[2]= this.setSituation("Getting tired", "For some reason your dragon seems to be"
+                + "very tired", 1, "negative","Leg");
+        situations[3]= this.setSituation("Injured wing", "While attempting to fly one of your dragon's"
+                + " wings was injured by crashing into a tree", 2, "negative","Wing");
+        situations[4]= this.setSituation("Getting tired", "You and your Dragon have travelled a long"
+                + " distance trying to find his mother and both seem to be tired", 1, "negative","Brain");
+        situations[5]= this.setSituation("Collect Medicine", "You have found some"
+                + "medicine for your dragon", 1 , "positive","Item");
+        situations[6]= this.setSituation("Collect Food", "You have found some food that "
+                + "can help you and your dragon enjoy!!!!", 1, "positive","Item");
+        situations[7]= this.setSituation("Collect Toy", "Somebody left this toy you can keep it"
+                + "to play with your dragon later on", 1, "positive","Item");
+        situations[8]= this.setSituation("Collect Money", "Here, some coins so you can "
+                + "buy whatever you need for your dragon", 1, "positive","Item");
+        situations[9]= this.setSituation("", "Description 10", 1, "","");
         
         RaiseADragon.getCurrentGame().setSituations(situations);
         
     }
     
     public Situation setSituation(String name, String description,
-            int points, String type){
+            int points, String type, String bodyPart){
             
         Situation situation = new Situation();
         situation.setName(name);
         situation.setDescription(description);
         situation.setPoint(points);
         situation.setType(type);
+        situation.setPartAfected(bodyPart);
         
         return situation;
     }
@@ -160,11 +176,11 @@ public class ControlGame {
         try(FileOutputStream fops = new FileOutputStream(filePath)){
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
-            Game game = new Game(); // create new game
+            Game game = RaiseADragon.getCurrentGame(); // create new game
         RaiseADragon.setCurrentGame(game); // save in Raise a Dragon
             
             output.writeObject(game);
-            
+  
         }catch(IOException e){
             throw new ControlGameException(e.getMessage());
         }

@@ -8,6 +8,9 @@ package byui.cit260.raiseADragon.control;
 import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.raiseADragon.model.BodyPart;
 import byui.cit260.raiseADragon.model.Dragon;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -37,7 +40,7 @@ public class ControlDragon {
         dragon.setSize(1);
         ControlDragon.ValidateInput(1);
         
-        BodyPart[] bodyParts = new BodyPart[10];
+        BodyPart[] bodyParts = new BodyPart[11];
         
         bodyParts[0]= ControlDragon.createBodyPart("Leg","Right front leg","",3);
         bodyParts[1]= ControlDragon.createBodyPart("Leg","Left front leg","",10);
@@ -49,6 +52,7 @@ public class ControlDragon {
         bodyParts[7]= ControlDragon.createBodyPart("Wing","Left wing","",10);
         bodyParts[8]= ControlDragon.createBodyPart("Tail","The Tail","",10);
         bodyParts[9]= ControlDragon.createBodyPart("Body","The Body","",10);
+        bodyParts[10]= ControlDragon.createBodyPart("Stomache","The Stomache","",10);
     
         ControlDragon.getStatus(bodyParts);
         
@@ -85,10 +89,21 @@ public class ControlDragon {
         }   
     }
     
-    
-    public static Dragon getDragon(){
-        Dragon currentDragon = new Dragon();
-            
-        return currentDragon;
+    public static void readFile(String filePath){
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath)))
+		{
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+
+	}
     }
-}
+    
+
