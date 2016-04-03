@@ -9,6 +9,7 @@ import byui.cit260.exceptions.BodyPartControlException;
 import byui.cit260.exceptions.ControlGameException;
 import byui.cit260.raiseADragon.model.BodyPart;
 import byui.cit260.raiseADragon.model.Dragon;
+import byui.cit260.raiseADragon.model.Situation;
 import byui.cit260.raiseADragon.view.ErrorView;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -92,4 +93,48 @@ public class ControlBodyPartStatus {
         
         return status;
     }
-}
+    
+    public static void addPoints(Situation situation) throws BodyPartControlException{
+        BodyPart[] bodyParts = RaiseADragon.getCurrentGame().getDragon().getBodyParts();
+        int points = situation.getPoint();
+        
+        for (int i=0; i<bodyParts.length;i++){
+            
+            try{
+            if (bodyParts[i].getName().equals(situation.getPartAfected())){
+                if (situation.getType().equals("negative")){
+                   
+                    int currentPoints = bodyParts[i].getPoints();
+                    int situationPoints = situation.getPoint();
+                    currentPoints -= situationPoints;
+                    
+                    if (currentPoints < 0){
+                        currentPoints=0;
+                    }else if(currentPoints > 10){
+                        currentPoints=10;
+                    }
+                    
+                    bodyParts[i].setPoints(currentPoints);
+                    ControlBodyPartStatus partStatus = new ControlBodyPartStatus();
+                    String status=partStatus.calcBodyPartStatus(bodyParts[i]);
+                    bodyParts[i].setStatus(status);                    
+                }    
+                    
+                }/*else if (situation.getType().equals("positive")){
+                    
+                    int currentPoints = bodyParts[i].getPoints();
+                    int situationPoints = situation.getPoint();
+                    currentPoints += situationPoints;
+                    bodyParts[i].setPoints(currentPoints);
+                    ControlBodyPartStatus partStatus = new ControlBodyPartStatus();
+                    String status=partStatus.calcBodyPartStatus(bodyParts[i]);
+                    bodyParts[i].setStatus(status);
+                    
+                }*/
+            }catch(BodyPartControlException e){
+                ErrorView.display("ControlBodyPartStatus", e.getMessage());
+            }
+            }
+        }
+    }
+

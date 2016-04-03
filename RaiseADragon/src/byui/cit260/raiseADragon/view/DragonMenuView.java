@@ -6,6 +6,7 @@
 package byui.cit260.raiseADragon.view;
 
 import byui.cit260.exceptions.BodyPartControlException;
+import byui.cit260.raiseADragon.control.ControlInteraction;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -30,7 +31,6 @@ public class DragonMenuView extends View {
                 + "\nW - Wash"
                 + "\nF - Feed"
                 + "\nL - Sleep"
-                + "\nJ - Teach Dragon to Fly"
                 + "\nH - Help Menu"
                 + "\nR - Print Report"
                 + "\nE - Exit"
@@ -64,9 +64,6 @@ public class DragonMenuView extends View {
                 case 'L': // Go to bed
                     this.sleepDragon();
                     break;
-                case 'J': // Teach dragon to fly
-                    this.teachToFly();
-                    break;
                 case 'H': // Show help menu
                     this.helpMenu();
                     break;
@@ -99,31 +96,35 @@ public class DragonMenuView extends View {
     }
 
     private void playDragon() {
-        console.println("\n*** View Details did a thing.");
+       ControlInteraction controlInteration = new ControlInteraction();
+        controlInteration.Play();
     }
 
     private void teachDragon() {
-        console.println("\n*** View Details did a thing.");
+        ControlInteraction controlInteration = new ControlInteraction();
+        controlInteration.Teach();
     }
 
     private void healDragon() {
-        console.println("\n*** View Details did a thing.");
+        //console.println("\n*** View Details did a thing.");
+        ControlInteraction controlInteration = new ControlInteraction();
+        controlInteration.heal();
+        
     }
 
     private void washDragon() {
-        console.println("\n*** View Details did a thing.");
+       ControlInteraction controlInteration = new ControlInteraction();
+        controlInteration.Wash();
     }
 
     private void feedDragon() {
-        console.println("\n*** View Details did a thing.");
+        ControlInteraction controlInteration = new ControlInteraction();
+        controlInteration.Feed();
     }
 
     private void sleepDragon() {
-        console.println("\n*** View Details did a thing.");
-    }
-
-    private void teachToFly() {
-        console.println("\n*** View Details did a thing.");
+        ControlInteraction controlInteration = new ControlInteraction();
+        controlInteration.Sleep();
     }
 
     private void helpMenu() {

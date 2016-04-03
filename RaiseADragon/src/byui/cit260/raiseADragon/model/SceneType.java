@@ -5,11 +5,13 @@
  */
 package byui.cit260.raiseADragon.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Chuy
  */
-public enum SceneType {
+public enum SceneType implements Serializable{
     start,
     finish,
     fatigue,

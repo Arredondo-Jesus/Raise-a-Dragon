@@ -39,7 +39,15 @@ public class DragonStatusView{
         Dragon dragon = game.getDragon();
         
         BodyPart [] bodyParts=dragon.getBodyParts();
+        int time = RaiseADragon.getTime();
         
+        if (time < 10){
+            ControlDragon.readFile("C:/Users/Chuy/Documents"
+                 + "/NetBeansProjects/Raise-a-Dragon/RaiseADragon/dragon.txt");
+        }else{
+             ControlDragon.readFile("C:/Users/Chuy/Documents"
+                 + "/NetBeansProjects/Raise-a-Dragon/RaiseADragon/bigDragon.txt");
+        }
         
         console.print("\n\t----------------------------------------------------"
                        +"\n\t! Dragon Statisticst"

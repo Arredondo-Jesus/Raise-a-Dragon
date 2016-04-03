@@ -118,6 +118,16 @@ public class MainMenuView extends View {
         console.println("\tWelcome to Raise a Dragon, " + player.getName());
         console.println("\tRaise your dragon well!");
         console.println("\n\n=================================================");
+        console.println("\n\n");
+        
+        int time = RaiseADragon.getTime();
+        if (time < 10){
+            ControlDragon.readFile("C:/Users/Chuy/Documents"
+                 + "/NetBeansProjects/Raise-a-Dragon/RaiseADragon/dragon.txt");
+        }else{
+             ControlDragon.readFile("C:/Users/Chuy/Documents"
+                 + "/NetBeansProjects/Raise-a-Dragon/RaiseADragon/bigDragon.txt");
+        }
     }
 
     @Override
@@ -132,14 +142,26 @@ public class MainMenuView extends View {
                     System.out.println("There was an error"+e.getMessage());
                 }
                 break;
-            case 'G': // get and start an existing game
+            case 'G': {
+            try {
+                // get and start an existing game
                 this.startExistingGame();
+            } catch (IOException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'H': // display the help menu
                 this.displayHelpMenu();
                 break;
-            case 'S': // save the current game
+            case 'S': {
+            try {
+                // save the current game
                 this.saveGame();
+            } catch (IOException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'E': // Exit the program
                 return true;
@@ -179,8 +201,9 @@ public class MainMenuView extends View {
        GameMenuView gameView = new GameMenuView();
        gameView.display();
     }
-    private void startExistingGame(){
-        System.out.println("\n\nSTART A SAVED GAME I THINK LET US HOPE IT IS TRUE");
+    private void startExistingGame() throws IOException{
+        System.out.println("\n\nEnter the file path for file where the game"
+                            + "saved.");
         
         String filePath = this.getInput();
         
@@ -188,16 +211,26 @@ public class MainMenuView extends View {
             ControlGame.getSavedGame(filePath);
         } catch (Exception e) {
             ErrorView.display("MainMenuView", e.getMessage());
-            
-            GameMenuView gameMenu = new GameMenuView();
+        }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        Game game =RaiseADragon.getCurrentGame();
+        Dragon dragon = game.getDragon();
+        
+        try{
+            gameMenu.display();
+        }catch(Throwable te){
+            ErrorView.display(this.getClass().getName(),te.getMessage());
+            te.printStackTrace();
             gameMenu.display();
         }
     }
 
-    private void saveGame() {
+    private void saveGame() throws IOException {
         //Prompty for and get the name of the file to save the game in
         System.out.println("\n\nEnter the file path of the file where the "
                 + "file is going to be saved");
+
         String filePath = this.getInput();
         
         try{

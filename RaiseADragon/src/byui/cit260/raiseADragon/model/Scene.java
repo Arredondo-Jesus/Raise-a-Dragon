@@ -5,6 +5,7 @@
  */
 package byui.cit260.raiseADragon.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
  *
  * @author Chuy
  */
-public class Scene {
+public class Scene implements Serializable{
     
     String description;
     String mapSymbol;
